@@ -1,0 +1,22 @@
+[
+  {
+    "id": "MERAY-20251208-0001",
+    "name": "Felix Furtado",
+    "company": "Global Tech Inc.",
+    "email": "felix@gmail.com",
+    "phone": "(555) 123-4567899",
+    "message": "wqwq",
+    "timestamp": "2025-12-08T20:26:03.102378",
+    "status": "new"
+  },
+  {
+    "id": "MERAY-20251209-0002",
+    "name": "Felix Furtado",
+    "company": "Global Tech Inc.",
+    "email": "felix@gmail.com",
+    "phone": "8728372878",
+    "message": "felix",
+    "timestamp": "2025-12-09T10:45:31.603817",
+    "status": "new"
+  }
+]

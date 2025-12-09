@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meray Admin</title>
+    <style>
+        :root {
+            --primary: #375b6d;
+            --primary-light: #4a636e;
+            --primary-dark: #0f1823;
+            --text: #1f221f;
+            --text-light: #6b7280;
+            --background: #f6f4e8;
+            --border: #e5e7eb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background: #f9fafb;
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 160px;
+            height: auto;
+        }
+
+        .title h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 5px;
+        }
+
+        .title p {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            font-size: 14px;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: rgba(55, 91, 109, 0.1);
+            transform: translateY(-1px);
+        }
+
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid var(--primary);
+        }
+
+        .stat-card h3 {
+            font-size: 12px;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .stat-card .number {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        /* Submissions List */
+        .submissions-list {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .list-header {
+            padding: 24px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .list-header h2 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+
+        .refresh-btn {
+            background: var(--background);
+            border: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .refresh-btn:hover {
+            background: #e5e7eb;
+        }
+
+        .submission-item {
+            padding: 24px;
+            border-bottom: 1px solid var(--border);
+            transition: background 0.2s;
+        }
+
+        .submission-item:hover {
+            background: #fafafa;
+        }
+
+        .submission-item:last-child {
+            border-bottom: none;
+        }
+
+        .submission-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+
+        .submission-title h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 4px;
+        }
+
+        .submission-meta {
+            display: flex;
+            gap: 16px;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .submission-date {
+            font-family: monospace;
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        .submission-status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-new {
+            background: rgba(59, 130, 246, 0.1);
+            color: #3b82f6;
+        }
+
+        .status-contacted {
+            background: rgba(34, 197, 94, 0.1);
+            color: #22c55e;
+        }
+
+        .submission-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 16px;
+        }
+
+        .detail {
+            font-size: 14px;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: var(--text-light);
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        .detail-value {
+            color: var(--text);
+        }
+
+        .detail-value a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .detail-value a:hover {
+            text-decoration: underline;
+        }
+
+        .submission-message {
+            background: var(--background);
+            padding: 16px;
+            border-radius: 8px;
+            margin-top: 16px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Loading State */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-light);
+        }
+
+        .spinner {
+            border: 3px solid var(--border);
+            border-top: 3px solid var(--primary);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .empty-icon {
+            font-size: 48px;
+            color: var(--border);
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+
+        .empty-state h3 {
+            font-size: 18px;
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+
+        .empty-state p {
+            color: var(--text-light);
+            max-width: 400px;
+            margin: 0 auto 20px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .header-actions {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .submission-header {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .submission-details {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-section">
+                <img src="image-removebg-preview (1).png" alt="Meray" class="logo">
+                <div class="title">
+                    <h1>Meray Admin Panel</h1>
+                    <p>Check Out the leads</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-primary" onclick="downloadJSON()">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 8v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8"></path>
+                        <path d="M8 12V2m0 0L5 5m3-3 3 3"></path>
+                    </svg>
+                    Download JSON
+                </button>
+                <a href="index.html" class="btn btn-outline">
+                    Back to Site
+                </a>
+            </div>
+        </header>
+
+        <div class="stats-grid" id="stats">
+            <!-- Stats will be populated -->
+        </div>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <div class="submissions-list">
+            <div class="list-header">
+                <h2>Recent Submissions</h2>
+                <button class="refresh-btn" onclick="loadSubmissions()">
+                    <i class="fa fa-refresh" aria-hidden="true"></i>
+                    Refresh
+                </button>
+            </div>
+
+            <div id="submissions-container">
+                <!-- Loading state initially -->
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Loading submissions from server...</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2025 Meray. </p>
+            <p id="server-status" style="margin-top: 5px; font-size: 12px;">Server: Not connected</p>
+        </footer>
+    </div>
+
+    <script>
+        const SERVER_URL = 'http://72.61.171.226:5091';  // Your Flask server URL
+        
+        // Load submissions on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            loadSubmissions();
+            checkServerStatus();
+        });
+
+        async function checkServerStatus() {
+            try {
+                const response = await fetch(`${SERVER_URL}/api/submissions`);
+                if (response.ok) {
+                    document.getElementById('server-status').textContent = 'Server: Connected ✓';
+                    document.getElementById('server-status').style.color = '#10b981';
+                } else {
+                    document.getElementById('server-status').textContent = 'Server: Error';
+                    document.getElementById('server-status').style.color = '#ef4444';
+                }
+            } catch (error) {
+                document.getElementById('server-status').textContent = 'Server: Not running';
+                document.getElementById('server-status').style.color = '#ef4444';
+            }
+        }
+
+        async function loadSubmissions() {
+            const container = document.getElementById('submissions-container');
+            
+            // Show loading state
+            container.innerHTML = `
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Loading submissions from server...</p>
+                </div>
+            `;
+            
+            try {
+                // Fetch data from Flask server
+                const response = await fetch(`${SERVER_URL}/api/submissions`);
+                
+                if (!response.ok) {
+                    throw new Error(`Server error: ${response.status}`);
+                }
+                
+                const submissions = await response.json();
+                
+                updateStats(submissions);
+                displaySubmissions(submissions);
+                
+            } catch (error) {
+                console.error('Error loading submissions:', error);
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon">⚠️</div>
+                        <h3>Connection Error</h3>
+                        <p>Unable to connect to the server. Make sure Flask is running on port 5000.</p>
+                        <p style="font-size: 12px; margin-top: 10px;">${error.message}</p>
+                        <button class="btn btn-primary" onclick="loadSubmissions()" style="margin-top: 10px;">
+                            Try Again
+                        </button>
+                    </div>
+                `;
+            }
+        }
+
+        function updateStats(submissions) {
+            const statsContainer = document.getElementById('stats');
+            
+            // Calculate today's submissions
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            const todaySubmissions = submissions.filter(s => {
+                const subDate = new Date(s.timestamp);
+                return subDate >= today;
+            }).length;
+            
+            // Calculate this week's submissions
+            const weekAgo = new Date(today);
+            weekAgo.setDate(weekAgo.getDate() - 7);
+            const weekSubmissions = submissions.filter(s => {
+                const subDate = new Date(s.timestamp);
+                return subDate >= weekAgo;
+            }).length;
+            
+            statsContainer.innerHTML = `
+                <div class="stat-card">
+                    <h3>Total Submissions</h3>
+                    <div class="number">${submissions.length}</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Today</h3>
+                    <div class="number">${todaySubmissions}</div>
+                </div>
+                <div class="stat-card">
+                    <h3>This Week</h3>
+                    <div class="number">${weekSubmissions}</div>
+                </div>
+                <div class="stat-card">
+                    <h3>New Leads</h3>
+                    <div class="number">${submissions.filter(s => s.status === 'new').length}</div>
+                </div>
+            `;
+        }
+
+        function displaySubmissions(submissions) {
+            const container = document.getElementById('submissions-container');
+            
+            if (submissions.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon">📭</div>
+                        <h3>No submissions yet</h3>
+                        <p>When users submit the early bird form, their submissions will appear here.</p>
+                        <a href="index.html" class="btn btn-primary" style="display: inline-block; margin-top: 10px;">
+                            View Form
+                        </a>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Sort by date (newest first)
+            submissions.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+            
+            let html = '';
+            
+            submissions.forEach((submission, index) => {
+                const date = new Date(submission.timestamp);
+                const formattedDate = date.toLocaleDateString('en-US', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+                
+                const shortDate = date.toLocaleDateString('en-US', {
+                    month: 'short',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+                
+                html += `
+                    <div class="submission-item">
+                        <div class="submission-header">
+                            <div class="submission-title">
+                                <h3>${submission.name}</h3>
+                                <div class="submission-meta">
+                                    <span>${submission.company}</span>
+                                    <span>ID: ${submission.id}</span>
+                                </div>
+                            </div>
+                            <div style="text-align: right;">
+                                <span class="submission-status status-${submission.status}">
+                                    ${submission.status}
+                                </span>
+                                <div class="submission-date">${shortDate}</div>
+                            </div>
+                        </div>
+                        
+                        <div class="submission-details">
+                            <div class="detail">
+                                <span class="detail-label">Email</span>
+                                <div class="detail-value">
+                                    <a href="mailto:${submission.email}">${submission.email}</a>
+                                </div>
+                            </div>
+                            <div class="detail">
+                                <span class="detail-label">Phone</span>
+                                <div class="detail-value">
+                                    <a href="tel:${submission.phone}">${submission.phone}</a>
+                                </div>
+                            </div>
+                            <div class="detail">
+                                <span class="detail-label">Submitted</span>
+                                <div class="detail-value">${formattedDate}</div>
+                            </div>
+                        </div>
+                        
+                        ${submission.message ? `
+                            <div class="submission-message">
+                                <strong>Message:</strong> ${submission.message}
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+
+        async function downloadJSON() {
+            try {
+                // Download from Flask server
+                const response = await fetch(`${SERVER_URL}/api/download-json`);
+                
+                if (!response.ok) {
+                    throw new Error('No data to download');
+                }
+                
+                // Create download link
+                const blob = await response.blob();
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `meray-submissions-${new Date().toISOString().split('T')[0]}.json`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                
+            } catch (error) {
+                alert('Error downloading: ' + error.message);
+            }
+        }
+
+        // Auto-refresh every 30 seconds
+        setInterval(loadSubmissions, 30000);
+    </script>
+</body>
+</html>

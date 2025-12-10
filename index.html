@@ -4055,7 +4055,7 @@ document.getElementById("earlyBirdForm").addEventListener("submit", async functi
 
     try {
         // Send to Flask server
-        const response = await fetch('http://72.61.171.226:5091/api/submit', {
+        const response = await fetch('https://api.meray.cloud/api/submit', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -4551,5 +4551,6 @@ document.getElementById("earlyBirdForm").addEventListener("submit", async functi
     </script>
   </body>
 </html>
+
 
 

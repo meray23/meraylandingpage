@@ -1,0 +1,1204 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Meray · Features</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+/* ─── RESET & ROOT ─── */
+:root {
+  --bg:        #f6f4e8;
+  --ink:       #375b6d;
+  --ink-dark:  #1c2b33;
+  --ink-faint: rgba(54,91,109,0.10);
+  --ink-mid:   rgba(54,91,109,0.22);
+  --white:     #ffffff;
+  --warm:      #efede0;
+  --warm-deep: #e8e5d4;
+  --green:     #9ee8b8;
+  --green-dim: rgba(158,232,184,0.18);
+  --font-head: 'Teko', sans-serif;
+  --font-body: 'Roboto', sans-serif;
+  --h:         68px;
+  --r:         3px;
+  --page-max:  1400px;
+  --page-pad:  5%;
+}
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body {
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font-body);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+a { text-decoration:none; color:inherit; }
+button { font-family:var(--font-body); cursor:pointer; border:none; background:none; }
+img { display:block; }
+
+/* ─── SHARED UTILITIES ─── */
+.wrap { max-width:var(--page-max); margin:0 auto; padding:0 var(--page-pad); }
+
+.sec-ey { display:flex; align-items:center; gap:10px; margin-bottom:18px; }
+.sec-ey__line { width:24px; height:1px; background:var(--ink); flex-shrink:0; }
+.sec-ey__txt {
+  font-size:10px; font-weight:500; letter-spacing:3px;
+  text-transform:uppercase; color:var(--ink-dark); opacity:0.55;
+}
+.sec-title {
+  font-family:var(--font-head);
+  font-size:clamp(40px,4.8vw,68px);
+  font-weight:700; line-height:0.95;
+  text-transform:uppercase; color:var(--ink);
+}
+.sec-title em { font-style:normal; color:transparent; -webkit-text-stroke:1.5px var(--ink); }
+
+/* Scroll reveal */
+.reveal { opacity:0; transform:translateY(22px); transition:opacity 0.7s ease,transform 0.7s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+.d1 { transition-delay:0.1s; }
+.d2 { transition-delay:0.2s; }
+.d3 { transition-delay:0.3s; }
+.d4 { transition-delay:0.4s; }
+.d5 { transition-delay:0.5s; }
+
+/* Buttons */
+.btn {
+  font-family:var(--font-body); font-size:11px; font-weight:500;
+  letter-spacing:1px; text-transform:uppercase;
+  border-radius:var(--r); cursor:pointer; transition:all 0.2s;
+  display:inline-flex; align-items:center;
+}
+.btn-o { border:1px solid var(--ink-mid); color:var(--ink); background:transparent; padding:10px 22px; }
+.btn-o:hover { background:var(--ink-faint); border-color:var(--ink); }
+.btn-s { background:var(--ink); color:var(--white); padding:11px 24px; border:1px solid var(--ink); }
+.btn-s:hover { background:var(--ink-dark); }
+
+/* ─── HEADER ─── */
+.hdr {
+  position:fixed; top:0; left:0; right:0; height:var(--h);
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 var(--page-pad); z-index:200;
+  background:rgba(246,244,232,0.88);
+  backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--ink-faint);
+}
+.hdr__logo img { height:46px; width:auto; }
+.hdr__nav { display:flex; gap:36px; align-items:center; }
+.nav-lnk {
+  font-size:11px; font-weight:500; letter-spacing:1.2px;
+  text-transform:uppercase; color:var(--ink-dark); opacity:0.6;
+  transition:opacity 0.2s; position:relative; padding-bottom:3px;
+}
+.nav-lnk::after {
+  content:''; position:absolute; bottom:0; left:0; right:0;
+  height:1px; background:var(--ink);
+  transform:scaleX(0); transform-origin:left; transition:transform 0.25s;
+}
+.nav-lnk:hover { opacity:1; }
+.nav-lnk:hover::after { transform:scaleX(1); }
+.nav-lnk--on { opacity:1; }
+.nav-lnk--on::after { transform:scaleX(1); }
+.hdr__actions { display:flex; gap:10px; align-items:center; }
+
+/* ─── FEATURES HERO ─── */
+.feat-hero {
+  padding-top: var(--h);
+  background: var(--ink-dark);
+  position: relative;
+  overflow: hidden;
+  height: 680px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.feat-hero::before {
+  content: 'FEATURES';
+  position: absolute;
+  right: -40px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-head);
+  font-size: 320px;
+  font-weight: 700;
+  color: rgba(246, 244, 232, 0.025);
+  line-height: 1;
+  pointer-events: none;
+  letter-spacing: -12px;
+  white-space: nowrap;
+}
+.feat-hero__inner {
+  padding: 0 var(--page-pad);
+  max-width: var(--page-max);
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.feat-hero__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.feat-hero__eyebrow-line {
+  width: 32px;
+  height: 1.5px;
+  background: var(--green);
+}
+.feat-hero__eyebrow-text {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(246, 244, 232, 0.5);
+}
+.feat-hero__h1 {
+  font-family: var(--font-head);
+  font-size: clamp(56px, 6.5vw, 96px);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--bg);
+}
+.feat-hero__h1 em {
+  font-style: normal;
+  color: transparent;
+  -webkit-text-stroke: 1.8px var(--bg);
+}
+.feat-hero__right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 28px;
+}
+.feat-hero__desc {
+  font-size: 15px;
+  font-weight: 300;
+  color: rgba(246, 244, 232, 0.5);
+  line-height: 1.9;
+  max-width: 440px;
+}
+.feat-hero__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.feat-hero__tag {
+  padding: 7px 16px;
+  border: 1px solid rgba(246, 244, 232, 0.15);
+  border-radius: var(--r);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: rgba(246, 244, 232, 0.5);
+  transition: all 0.2s;
+}
+.feat-hero__tag:hover {
+  border-color: rgba(246, 244, 232, 0.3);
+  color: rgba(246, 244, 232, 0.75);
+  background: rgba(246, 244, 232, 0.04);
+}
+
+/* ─── MARQUEE ─── */
+.mq-wrap { background:var(--ink-dark); overflow:hidden; padding:15px 0; border-top:1px solid rgba(255,255,255,0.04); }
+.mq-track { display:flex; animation:mq 28s linear infinite; width:max-content; }
+.mq-item { display:flex; align-items:center; gap:18px; padding:0 44px; font-family:var(--font-head); font-size:13px; font-weight:400; letter-spacing:2.5px; text-transform:uppercase; color:rgba(246,244,232,0.65); white-space:nowrap; }
+.mq-dot { width:3px; height:3px; border-radius:50%; background:rgba(246,244,232,0.2); flex-shrink:0; }
+
+/* ─── FEATURE SECTION SHARED ─── */
+.sec-hdr { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:end; margin-bottom:64px; }
+.sec-desc { font-size:14px; font-weight:300; color:var(--ink-dark); line-height:1.82; max-width:380px; align-self:end; opacity:0.68; margin-left:auto; }
+.sec-desc--light { color:rgba(246,244,232,0.48); opacity:1; }
+
+/* ─── FEATURE 1: CRM & LEADS ─── */
+.f-crm {
+  display:grid; grid-template-columns:1fr 1fr;
+  border-top:1px solid var(--ink-faint);
+  min-height:640px;
+}
+.f-crm__img {
+  position:relative; overflow:hidden; background:var(--ink-dark);
+}
+.f-crm__img img {
+  width:100%; height:100%; object-fit:cover; object-position:center;
+  filter:grayscale(100%) contrast(1.05);
+  opacity:0.55;
+}
+.f-crm__img-label {
+  position:absolute; bottom:36px; left:0;
+  writing-mode:vertical-rl; text-orientation:mixed; transform:rotate(180deg);
+  padding:0 18px; font-family:var(--font-head); font-size:10px;
+  letter-spacing:3px; text-transform:uppercase; color:rgba(246,244,232,0.25); font-weight:400;
+}
+.f-crm__img::after {
+  content:''; position:absolute; bottom:-60px; right:-60px;
+  width:180px; height:180px; border:1px solid rgba(246,244,232,0.06); border-radius:50%;
+}
+.f-crm__content {
+  padding:80px 7%; display:flex; flex-direction:column; justify-content:center;
+  background:var(--warm);
+}
+.f-crm__lead {
+  font-family:var(--font-head);
+  font-size:clamp(32px,3.2vw,52px);
+  font-weight:700; line-height:1.0; text-transform:uppercase;
+  color:var(--ink); margin-bottom:22px;
+}
+.f-crm__lead em { font-style:normal; color:transparent; -webkit-text-stroke:1.2px var(--ink); }
+.f-crm__body {
+  font-size:14px; font-weight:300; color:var(--ink-dark);
+  line-height:1.85; opacity:0.72; max-width:460px; margin-bottom:36px;
+}
+.feature-bullets { display:flex; flex-direction:column; gap:1px; background:var(--ink-faint); border:1px solid var(--ink-faint); border-radius:var(--r); overflow:hidden; margin-bottom:36px; }
+.fb { background:var(--bg); padding:18px 20px; display:flex; align-items:flex-start; gap:14px; transition:background 0.25s; }
+.fb:hover { background:var(--warm-deep); }
+.fb__dot { width:6px; height:6px; border-radius:50%; background:var(--ink); flex-shrink:0; margin-top:5px; opacity:0.4; }
+.fb__text { font-size:13px; font-weight:300; color:var(--ink-dark); line-height:1.65; }
+.fb__text strong { font-weight:500; color:var(--ink); }
+
+/* ─── FEATURE GRID SECTION ─── */
+.f-grid-sec { padding:100px 0; }
+.f-grid-sec--dark { background:var(--ink-dark); }
+.feat-grid {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:1px; background:var(--ink-faint);
+  border:1px solid var(--ink-faint); border-radius:var(--r); overflow:hidden;
+}
+.feat-grid--dark {
+  background:rgba(246,244,232,0.07);
+  border-color:rgba(246,244,232,0.07);
+}
+.fg {
+  background:var(--bg); padding:40px 34px;
+  position:relative; overflow:hidden; transition:background 0.3s; cursor:default;
+}
+.fg:hover { background:var(--warm); }
+.fg::after {
+  content:attr(data-n); position:absolute; bottom:-8px; right:14px;
+  font-family:var(--font-head); font-size:96px; font-weight:700;
+  color:var(--ink-faint); line-height:1; pointer-events:none;
+  transition:color 0.3s; letter-spacing:-2px;
+}
+.fg:hover::after { color:var(--ink-mid); }
+.fg--dark { background:rgba(246,244,232,0.02); }
+.fg--dark:hover { background:rgba(246,244,232,0.055); }
+.fg--dark::after { color:rgba(246,244,232,0.04); }
+.fg--dark:hover::after { color:rgba(246,244,232,0.08); }
+.fg__icon {
+  width:38px; height:38px; background:var(--ink); border-radius:5px;
+  display:flex; align-items:center; justify-content:center;
+  margin-bottom:26px; transition:transform 0.2s; flex-shrink:0;
+}
+.fg--dark .fg__icon { background:rgba(246,244,232,0.1); }
+.fg:hover .fg__icon { transform:scale(1.06); }
+.fg__icon svg { width:17px; height:17px; stroke:var(--white); fill:none; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; }
+.fg--dark .fg__icon svg { stroke:rgba(246,244,232,0.8); }
+.fg__tag { display:inline-flex; align-items:center; gap:6px; margin-bottom:16px; }
+.fg__tag-dot { width:5px; height:5px; border-radius:50%; background:var(--green); }
+.fg__tag-txt { font-size:9px; font-weight:500; letter-spacing:2px; text-transform:uppercase; color:var(--green); }
+.fg__title {
+  font-family:var(--font-head); font-size:22px; font-weight:600;
+  line-height:1.05; letter-spacing:0.5px; text-transform:uppercase;
+  color:var(--ink); margin-bottom:12px;
+}
+.fg--dark .fg__title { color:var(--bg); }
+.fg__desc { font-size:12.5px; font-weight:400; color:var(--ink-dark); line-height:1.75; opacity:0.68; }
+.fg--dark .fg__desc { color:rgba(246,244,232,0.42); opacity:1; }
+.fg__lnk {
+  display:inline-flex; align-items:center; gap:7px; margin-top:24px;
+  font-size:10px; font-weight:500; letter-spacing:2px; text-transform:uppercase;
+  color:var(--green); opacity:0; transform:translateY(6px);
+  transition:opacity 0.25s, transform 0.25s;
+}
+.fg:hover .fg__lnk { opacity:1; transform:translateY(0); }
+.fg__lnk svg { width:12px; height:12px; stroke:var(--green); fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+
+/* Wide card */
+.fg--wide {
+  grid-column:span 2;
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:40px; align-items:center;
+}
+.fg--wide .fg__content { display:flex; flex-direction:column; }
+.fg--wide .fg__visual {
+  background:var(--ink-dark); border-radius:6px;
+  padding:28px; display:flex; flex-direction:column;
+}
+.fg--wide-light .fg__visual { background:var(--warm-deep); }
+
+.mm { display:flex; align-items:center; justify-content:space-between; padding:14px 0; border-bottom:1px solid rgba(246,244,232,0.07); }
+.mm:last-child { border-bottom:none; }
+.mm--light { border-bottom-color:var(--ink-faint); }
+.mm__lbl { font-size:11px; color:rgba(246,244,232,0.38); }
+.mm--light .mm__lbl { color:var(--ink); opacity:0.45; }
+.mm__right { display:flex; align-items:center; }
+.mm__val { font-family:var(--font-head); font-size:24px; font-weight:600; color:var(--white); }
+.mm--light .mm__val { color:var(--ink); }
+.mm__badge { font-size:9px; color:var(--green); background:var(--green-dim); padding:2px 6px; border-radius:2px; margin-left:8px; }
+.mm--light .mm__badge { color:var(--ink); background:var(--ink-faint); }
+
+/* ─── SPLIT SHOWCASE ─── */
+.f-split { display:grid; grid-template-columns:1fr 1fr; border-top:1px solid var(--ink-faint); min-height:600px; }
+.f-split--rev { direction:rtl; }
+.f-split--rev > * { direction:ltr; }
+.f-split__img { position:relative; overflow:hidden; background:var(--ink-dark); }
+.f-split__img img { width:100%; height:100%; object-fit:cover; filter:grayscale(100%) contrast(1.08); opacity:0.5; }
+.f-split__img::after { content:''; position:absolute; inset:0; background:linear-gradient(to bottom, rgba(28,43,51,0.1) 0%, rgba(28,43,51,0.7) 100%); }
+.f-split__overlay {
+  position:absolute; bottom:0; left:0; right:0; z-index:2;
+  padding:32px;
+  display:grid; grid-template-columns:repeat(2,1fr); gap:1px;
+  background:var(--ink-dark);
+  border-top:1px solid rgba(255,255,255,0.06);
+}
+.f-split__stat { padding:18px 20px; border-right:1px solid rgba(255,255,255,0.06); }
+.f-split__stat:last-child { border-right:none; }
+.f-split__stat-lbl { font-size:9px; font-weight:500; letter-spacing:2px; text-transform:uppercase; color:rgba(246,244,232,0.35); margin-bottom:5px; }
+.f-split__stat-val { font-family:var(--font-head); font-size:28px; font-weight:700; color:var(--white); line-height:1; margin-bottom:4px; }
+.f-split__stat-badge { display:inline-flex; align-items:center; font-size:9px; letter-spacing:0.5px; color:var(--green); background:var(--green-dim); padding:2px 6px; border-radius:2px; }
+.f-split__content { padding:80px 7%; display:flex; flex-direction:column; justify-content:center; }
+.f-split__lead {
+  font-family:var(--font-head); font-size:clamp(32px,3.2vw,52px);
+  font-weight:700; line-height:1.0; text-transform:uppercase;
+  color:var(--ink); margin-bottom:22px;
+}
+.f-split__lead em { font-style:normal; color:transparent; -webkit-text-stroke:1.2px var(--ink); }
+.f-split__body { font-size:14px; font-weight:300; color:var(--ink-dark); line-height:1.85; opacity:0.72; margin-bottom:36px; }
+
+/* ─── ACCOUNTING DEEP DIVE ─── */
+.f-accounting { padding:100px 0; background:var(--ink-dark); position:relative; overflow:hidden; }
+.f-accounting::before {
+  content:'FINANCE'; position:absolute; right:-20px; top:50%; transform:translateY(-50%);
+  font-family:var(--font-head); font-size:240px; font-weight:700;
+  color:rgba(246,244,232,0.025); line-height:1; pointer-events:none;
+  letter-spacing:-10px; white-space:nowrap;
+}
+.f-accounting__hdr { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:end; margin-bottom:64px; }
+.f-accounting__hdr .sec-title { color:var(--bg); }
+.f-accounting__hdr .sec-title em { -webkit-text-stroke:1.5px var(--bg); }
+.f-accounting__hdr .sec-ey__line { background:var(--green); }
+.f-accounting__hdr .sec-ey__txt { color:rgba(246,244,232,0.45); opacity:1; }
+.f-accounting__sub { font-size:14px; font-weight:300; color:rgba(246,244,232,0.48); line-height:1.82; max-width:380px; align-self:end; }
+
+.acc-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:rgba(246,244,232,0.06); border:1px solid rgba(246,244,232,0.06); border-radius:var(--r); overflow:hidden; }
+.ac {
+  padding:36px 28px; background:rgba(246,244,232,0.02);
+  position:relative; transition:background 0.3s;
+}
+.ac:hover { background:rgba(246,244,232,0.055); }
+.ac__phase { font-size:9px; font-weight:500; letter-spacing:2.5px; text-transform:uppercase; color:var(--green); margin-bottom:16px; opacity:0.75; }
+.ac__num { font-family:var(--font-head); font-size:64px; font-weight:700; line-height:1; color:rgba(246,244,232,0.05); margin-bottom:12px; }
+.ac__title { font-family:var(--font-head); font-size:20px; font-weight:600; text-transform:uppercase; color:var(--bg); line-height:1.05; letter-spacing:0.5px; margin-bottom:12px; }
+.ac__desc { font-size:12px; font-weight:300; color:rgba(246,244,232,0.42); line-height:1.72; }
+.ac__badge {
+  margin-top:20px; display:inline-flex; align-items:center; gap:6px;
+  padding:4px 10px; border-radius:2px;
+  background:rgba(158,232,184,0.10); border:1px solid rgba(158,232,184,0.18);
+}
+.ac__badge span { font-size:9px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:var(--green); }
+
+/* ─── IMAGE SHOWCASE ─── */
+.f-showcase { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--ink-faint); border-top:1px solid var(--ink-faint); }
+.showcase-item { position:relative; overflow:hidden; min-height:320px; background:var(--ink-dark); }
+.showcase-item img { width:100%; height:100%; object-fit:cover; filter:grayscale(100%) contrast(1.08); opacity:0.5; transition:opacity 0.4s; }
+.showcase-item:hover img { opacity:0.65; }
+.showcase-item__overlay {
+  position:absolute; inset:0; display:flex; flex-direction:column;
+  justify-content:flex-end; padding:28px;
+  background:linear-gradient(to top, rgba(28,43,51,0.85) 0%, transparent 60%);
+}
+.showcase-item__label { font-family:var(--font-head); font-size:22px; font-weight:700; text-transform:uppercase; color:var(--bg); line-height:1.1; margin-bottom:6px; }
+.showcase-item__sub { font-size:11px; font-weight:300; color:rgba(246,244,232,0.5); letter-spacing:0.5px; }
+
+/* ─── INTEGRATIONS / CAPABILITIES ─── */
+.f-caps { padding:100px 0; background:var(--warm); border-top:1px solid var(--ink-faint); border-bottom:1px solid var(--ink-faint); }
+.caps-grid {
+  display:grid; grid-template-columns:repeat(4,1fr);
+  gap:1px; background:var(--ink-faint);
+  border:1px solid var(--ink-faint); border-radius:var(--r); overflow:hidden;
+  margin-top:64px;
+}
+.cap {
+  background:var(--bg); padding:32px 26px; transition:background 0.25s;
+  display:flex; flex-direction:column; gap:14px;
+}
+.cap:hover { background:var(--warm-deep); }
+.cap__num { font-family:var(--font-head); font-size:9px; font-weight:500; letter-spacing:2px; color:var(--ink); opacity:0.28; }
+.cap__icon { width:36px; height:36px; border:1px solid var(--ink-faint); border-radius:5px; display:flex; align-items:center; justify-content:center; }
+.cap__icon svg { width:16px; height:16px; stroke:var(--ink); fill:none; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; opacity:0.6; }
+.cap__title { font-family:var(--font-head); font-size:16px; font-weight:600; letter-spacing:0.5px; text-transform:uppercase; color:var(--ink); line-height:1.1; }
+.cap__desc { font-size:12px; font-weight:300; color:var(--ink-dark); line-height:1.68; opacity:0.6; }
+
+/* ─── CTA BAND ─── */
+.f-cta-band {
+  background:var(--ink-dark); padding:80px 0;
+  display:flex; align-items:center; justify-content:center;
+  position:relative; overflow:hidden;
+}
+.f-cta-band::before {
+  content:'START'; position:absolute; right:-30px; bottom:-20px;
+  font-family:var(--font-head); font-size:240px; font-weight:700;
+  color:rgba(246,244,232,0.02); line-height:1; pointer-events:none; letter-spacing:-12px;
+}
+.f-cta-band__inner { text-align:center; position:relative; z-index:2; }
+.f-cta-band__title {
+  font-family:var(--font-head); font-size:clamp(40px,5vw,72px); font-weight:700;
+  text-transform:uppercase; color:var(--bg); line-height:0.95; margin-bottom:24px;
+}
+.f-cta-band__title em { font-style:normal; color:transparent; -webkit-text-stroke:1.5px var(--bg); }
+.f-cta-band__sub { font-size:14px; font-weight:300; color:rgba(246,244,232,0.45); line-height:1.8; margin-bottom:40px; max-width:480px; margin-left:auto; margin-right:auto; }
+.f-cta-band__btns { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+.btn-green { background:var(--green); color:var(--ink-dark); padding:13px 32px; font-size:12px; font-family:var(--font-body); font-weight:500; letter-spacing:1px; text-transform:uppercase; border-radius:var(--r); cursor:pointer; border:none; transition:all 0.2s; display:inline-flex; align-items:center; }
+.btn-green:hover { background:#b8f0cd; }
+.btn-ghost { border:1px solid rgba(246,244,232,0.2); color:rgba(246,244,232,0.7); background:transparent; padding:12px 26px; font-size:12px; font-family:var(--font-body); font-weight:500; letter-spacing:1px; text-transform:uppercase; border-radius:var(--r); cursor:pointer; transition:all 0.2s; display:inline-flex; align-items:center; }
+.btn-ghost:hover { border-color:rgba(246,244,232,0.4); color:var(--bg); }
+
+/* ─── FOOTER ─── */
+.footer-v2 { background:var(--ink-dark); border-top:1px solid rgba(246,244,232,0.07); }
+.fv2__top {
+  padding:72px var(--page-pad) 56px;
+  max-width:var(--page-max); margin:0 auto;
+  display:grid; grid-template-columns:260px 1fr;
+  gap:80px; border-bottom:1px solid rgba(246,244,232,0.07);
+  align-items:start;
+}
+.fv2__logo { height:40px; width:auto; margin-bottom:18px; filter:brightness(0) invert(1); opacity:0.8; }
+.fv2__tagline { font-size:12.5px; font-weight:300; color:rgba(246,244,232,0.38); line-height:1.8; margin-bottom:28px; }
+.fv2__socials { display:flex; gap:8px; }
+.fv2__social { width:32px; height:32px; border:1px solid rgba(246,244,232,0.12); border-radius:var(--r); display:flex; align-items:center; justify-content:center; transition:border-color 0.2s,background 0.2s; }
+.fv2__social:hover { border-color:rgba(246,244,232,0.28); background:rgba(246,244,232,0.05); }
+.fv2__social svg { width:13px; height:13px; stroke:rgba(246,244,232,0.45); fill:none; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; }
+.fv2__cols { display:grid; grid-template-columns:repeat(3,1fr); gap:40px; }
+.fv2__col { display:flex; flex-direction:column; gap:11px; }
+.fv2__col-head { font-size:9px; font-weight:500; letter-spacing:2.5px; text-transform:uppercase; color:rgba(246,244,232,0.28); margin-bottom:6px; }
+.fv2__lnk { font-size:12.5px; font-weight:300; color:rgba(246,244,232,0.50); transition:color 0.2s; line-height:1; }
+.fv2__lnk:hover { color:rgba(246,244,232,0.85); }
+.fv2__addr { font-size:12.5px; font-weight:300; color:rgba(246,244,232,0.32); line-height:1.72; }
+.fv2__cta { display:inline-flex; align-items:center; gap:7px; margin-top:6px; font-size:10px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:var(--green); transition:gap 0.2s; }
+.fv2__cta:hover { gap:11px; }
+.fv2__cta svg { width:12px; height:12px; stroke:var(--green); fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+.fv2__bottom { max-width:var(--page-max); margin:0 auto; padding:22px var(--page-pad); display:flex; align-items:center; justify-content:space-between; gap:20px; }
+.fv2__copy { font-size:11px; color:rgba(246,244,232,0.22); }
+.fv2__legal { display:flex; gap:22px; }
+.fv2__legal-lnk { font-size:11px; color:rgba(246,244,232,0.22); transition:color 0.2s; }
+.fv2__legal-lnk:hover { color:rgba(246,244,232,0.55); }
+.fv2__region { font-size:9px; font-weight:500; letter-spacing:2px; text-transform:uppercase; color:rgba(246,244,232,0.18); }
+
+/* ─── KEYFRAMES ─── */
+@keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
+@keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.5; transform:scale(0.8); } }
+@keyframes mq { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width:1100px) {
+  .feat-hero__inner { grid-template-columns:1fr; gap:28px; }
+  .f-crm { grid-template-columns:1fr; }
+  .f-crm__img { min-height:320px; }
+  .f-split { grid-template-columns:1fr; }
+  .f-split__img { min-height:320px; }
+  .sec-hdr { grid-template-columns:1fr; gap:28px; }
+  .sec-desc { margin-left:0; max-width:100%; }
+  .acc-grid { grid-template-columns:1fr 1fr; }
+  .f-accounting__hdr { grid-template-columns:1fr; gap:28px; }
+  .caps-grid { grid-template-columns:1fr 1fr; }
+  .feat-grid { grid-template-columns:1fr 1fr; }
+  .f-showcase { grid-template-columns:1fr 1fr; }
+  .fv2__top { grid-template-columns:1fr; gap:48px; }
+}
+@media (max-width:768px) {
+  .hdr__nav { display:none; }
+  .acc-grid { grid-template-columns:1fr; }
+  .caps-grid { grid-template-columns:1fr; }
+  .feat-grid { grid-template-columns:1fr; }
+  .fg--wide { grid-column:span 1; grid-template-columns:1fr; }
+  .fg--wide .fg__visual { display:none; }
+  .f-showcase { grid-template-columns:1fr; }
+  .fv2__cols { grid-template-columns:1fr 1fr; }
+  .fv2__bottom { flex-direction:column; text-align:center; gap:12px; }
+  .fv2__legal { justify-content:center; }
+}
+@media (max-width:480px) {
+  .fv2__cols { grid-template-columns:1fr; }
+  .feat-hero__tags { display:none; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="hdr">
+  <div class="hdr__logo">
+    <img src="logo_circle.png" alt="Merzaai"/>
+  </div>
+<nav class="hdr__nav">
+       <a href="index.html" class="nav-lnk ">Home</a>
+        <a href="meray-about.html" class="nav-lnk ">About</a>
+        <a href="features.html" class="nav-lnk nav-lnk--on">Features</a>
+        <a href="testimonails.html" class="nav-lnk">Testimonials</a>
+        <a href="contact.html" class="nav-lnk">Contact</a>
+      </nav>
+
+<link rel="stylesheet" href="mobile-nav.css">
+<script src="mobile-nav.js" defer></script>
+
+
+<div class="hdr__actions">
+
+   <a href="https://meray.cloud/login">
+        <button class="btn btn-s">Sign In</button>
+    </a>
+
+  <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+    </button>
+ 
+
+
+   
+</div>
+</header>
+
+<div class="drawer-overlay" id="drawerOverlay"></div>
+
+<nav class="hdr__nav-drawer" id="mobileDrawer">
+    <button class="drawer-close" id="drawerCloseBtn">✕</button>
+    <a href="index.html" class="nav-lnk nav-lnk--on">Home</a>
+    <a href="meray-about.html" class="nav-lnk">About</a>
+    <a href="features.html" class="nav-lnk">Features</a>
+    <a href="testimonails.html" class="nav-lnk">Testimonials</a>
+    <a href="contact.html" class="nav-lnk">Contact</a>
+    <div class="drawer-footer">
+    <p>Where commercial decisions<br/>become cash outcomes.</p>
+    <a href="https://meray.cloud/login" class="drawer-cta">Sign In</a>
+    
+    
+  </div>
+</nav>
+
+
+<!-- FEATURES HERO -->
+<section class="feat-hero">
+  <div class="feat-hero__inner">
+    <div style="animation:fadeUp 0.8s 0.1s both">
+      <div class="feat-hero__eyebrow">
+        <div class="feat-hero__eyebrow-line"></div>
+        <span class="feat-hero__eyebrow-text">Platform Capabilities</span>
+      </div>
+      <h1 class="feat-hero__h1">
+        Everything<br/>
+        Your Business<br/>
+        Needs In One<br/>
+        <em>Platform</em>
+      </h1>
+    </div>
+    <div class="feat-hero__right" style="animation:fadeUp 0.8s 0.25s both">
+      <p class="feat-hero__desc">
+        Meray brings together every tool your business depends on — from capturing leads and managing customers to tracking inventory, processing invoices, and analysing financials — all connected in a single, intuitive platform.
+      </p>
+      <div class="feat-hero__tags">
+        <span class="feat-hero__tag">CRM & Leads</span>
+        <span class="feat-hero__tag">Invoicing</span>
+        <span class="feat-hero__tag">Inventory</span>
+        <span class="feat-hero__tag">Accounting</span>
+        <span class="feat-hero__tag">Reports</span>
+        <span class="feat-hero__tag">Vendors</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="mq-wrap">
+  <div class="mq-track">
+    <span class="mq-item">Lead Management<span class="mq-dot"></span></span>
+    <span class="mq-item">Customer Management<span class="mq-dot"></span></span>
+    <span class="mq-item">Invoice & Billing<span class="mq-dot"></span></span>
+    <span class="mq-item">Inventory Tracking<span class="mq-dot"></span></span>
+    <span class="mq-item">Expense Management<span class="mq-dot"></span></span>
+    <span class="mq-item">Vendor Management<span class="mq-dot"></span></span>
+    <span class="mq-item">Bank Reconciliation<span class="mq-dot"></span></span>
+    <span class="mq-item">Data Migration<span class="mq-dot"></span></span>
+    <span class="mq-item">Sales Pipeline<span class="mq-dot"></span></span>
+<span class="mq-item">Quotation Management<span class="mq-dot"></span></span>
+<span class="mq-item">Purchase Orders<span class="mq-dot"></span></span>
+<span class="mq-item">Payment Tracking<span class="mq-dot"></span></span>
+<span class="mq-item">Recurring Invoices<span class="mq-dot"></span></span>
+<span class="mq-item">Tax Management<span class="mq-dot"></span></span>
+<span class="mq-item">Chart of Accounts<span class="mq-dot"></span></span>
+<span class="mq-item">Financial Reports<span class="mq-dot"></span></span>
+  </div>
+</div>
+
+<!-- ── FEATURE 1: CRM & LEAD MANAGEMENT (split) ── -->
+<section class="f-crm" id="crm">
+  <div class="f-crm__img">
+    <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=900&q=85&auto=format&fit=crop" alt="CRM & Sales team"/>
+    <div class="f-crm__img-label">CRM & Lead Management</div>
+  </div>
+  <div class="f-crm__content">
+    <div class="sec-ey reveal">
+      <div class="sec-ey__line"></div>
+      <span class="sec-ey__txt">Feature 01 · CRM</span>
+    </div>
+    <h2 class="f-crm__lead reveal d1">
+      Turn Leads Into<br/>
+      Loyal <em>Customers</em>
+    </h2>
+    <p class="f-crm__body reveal d2">
+      Capture every inquiry, nurture every relationship, and convert prospects into paying customers — all from one structured pipeline. Meray's CRM gives your sales team full visibility at every stage.
+    </p>
+    <div class="feature-bullets reveal d3">
+      <div class="fb">
+        <div class="fb__dot"></div>
+        <span class="fb__text"><strong>Pipeline View</strong> — Drag-and-drop stages from new lead to closed deal, with full history at each step.</span>
+      </div>
+      <div class="fb">
+        <div class="fb__dot"></div>
+        <span class="fb__text"><strong>Contact Profiles</strong> — Centralised customer records with communication logs, documents, and notes.</span>
+      </div>
+      <div class="fb">
+        <div class="fb__dot"></div>
+        <span class="fb__text"><strong>Follow-Up Reminders</strong> — Automated task reminders so no lead goes cold.</span>
+      </div>
+      <div class="fb">
+        <div class="fb__dot"></div>
+        <span class="fb__text"><strong>Conversion Reports</strong> — Track win rates, average deal time, and team performance instantly.</span>
+      </div>
+    </div>
+    <!-- <div class="reveal d4">
+      <button class="btn btn-s" style="padding:13px 32px;font-size:12px">Start Free Trial</button>
+    </div> -->
+  </div>
+</section>
+
+<!-- ── FEATURE 2: INVOICING & BILLING (grid) ── -->
+<section class="f-grid-sec" id="invoicing">
+  <div class="wrap">
+    <div class="sec-hdr">
+      <div class="reveal">
+        <div class="sec-ey">
+          <div class="sec-ey__line"></div>
+          <span class="sec-ey__txt">Feature 02 · Invoicing</span>
+        </div>
+        <h2 class="sec-title">
+          Smart<br/>
+          Invoicing &<br/>
+          <em>Billing</em>
+        </h2>
+      </div>
+      <p class="sec-desc reveal d2">
+        Create professional invoices in seconds, automate recurring billing, and get paid faster — all with real-time payment status tracking.
+      </p>
+    </div>
+
+    <div class="feat-grid">
+      <div class="fg" data-n="01">
+        <div class="fg__tag"><div class="fg__tag-dot"></div><span class="fg__tag-txt">Core</span></div>
+        <div class="fg__icon">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <h3 class="fg__title">One-Click Invoices</h3>
+        <p class="fg__desc">Generate branded invoices from quotations in a single click. Add line items, taxes, and discounts with ease.</p>
+        <a href="#" class="fg__lnk">Learn More <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+      </div>
+
+      <div class="fg" data-n="02">
+        <div class="fg__tag"><div class="fg__tag-dot"></div><span class="fg__tag-txt">Automation</span></div>
+        <div class="fg__icon">
+          <svg viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 014-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg>
+        </div>
+        <h3 class="fg__title">Recurring Billing</h3>
+        <p class="fg__desc">Set up automated recurring invoices for subscription clients and retainers. Never manually re-bill again.</p>
+        <a href="#" class="fg__lnk">Learn More <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+      </div>
+
+      <div class="fg" data-n="03">
+        <div class="fg__tag"><div class="fg__tag-dot"></div><span class="fg__tag-txt">Tracking</span></div>
+        <div class="fg__icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+        </div>
+        <h3 class="fg__title">Payment Tracking</h3>
+        <p class="fg__desc">Know exactly which invoices are paid, overdue, or pending. Send automated reminders to clients.</p>
+        <a href="#" class="fg__lnk">Learn More <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+      </div>
+
+      <div class="fg fg--wide fg--wide-light" data-n="04">
+        <div class="fg__content">
+          <div class="fg__tag"><div class="fg__tag-dot"></div><span class="fg__tag-txt">Complete Suite</span></div>
+          <div class="fg__icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <h3 class="fg__title">Quotation to Cash</h3>
+          <p class="fg__desc">Manage the entire billing lifecycle — from sending quotations and getting approvals to issuing invoices and recording payments — in one seamless workflow.</p>
+          <a href="#" class="fg__lnk">Learn More <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+        </div>
+        <div class="fg__visual">
+          <div class="mm mm--light"><span class="mm__lbl">Invoices This Month</span><div class="mm__right"><span class="mm__val" style="color:var(--ink)">1,284</span><span class="mm__badge">+18%</span></div></div>
+          <div class="mm mm--light"><span class="mm__lbl">Collection Rate</span><div class="mm__right"><span class="mm__val" style="color:var(--ink)">94%</span><span class="mm__badge">excellent</span></div></div>
+          <div class="mm mm--light"><span class="mm__lbl">Avg. Payment Time</span><div class="mm__right"><span class="mm__val" style="color:var(--ink)">4.2d</span><span class="mm__badge">fast</span></div></div>
+        </div>
+      </div>
+
+      <div class="fg" data-n="05">
+        <div class="fg__tag"><div class="fg__tag-dot"></div><span class="fg__tag-txt">Tax</span></div>
+        <div class="fg__icon">
+          <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+        </div>
+        <h3 class="fg__title">Tax Management</h3>
+        <p class="fg__desc">Apply tax rules automatically to invoices. Stay compliant with VAT, GST, and other regional tax requirements.</p>
+        <a href="#" class="fg__lnk">Learn More <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── IMAGE SHOWCASE STRIP ── -->
+<div class="f-showcase">
+  <div class="showcase-item">
+    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80&auto=format&fit=crop" alt="Financial dashboard"/>
+    <div class="showcase-item__overlay">
+      <div class="showcase-item__label">Financial Control</div>
+      <div class="showcase-item__sub">Complete accounting visibility</div>
+    </div>
+  </div>
+  <div class="showcase-item">
+    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80&auto=format&fit=crop" alt="Team management"/>
+    <div class="showcase-item__overlay">
+      <div class="showcase-item__label">Team Productivity</div>
+      <div class="showcase-item__sub">Collaborate without friction</div>
+    </div>
+  </div>
+  <div class="showcase-item">
+    <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80&auto=format&fit=crop" alt="Inventory warehouse"/>
+    <div class="showcase-item__overlay">
+      <div class="showcase-item__label">Inventory Accuracy</div>
+      <div class="showcase-item__sub">Real-time stock tracking</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── FEATURE 3: INVENTORY (split reversed) ── -->
+<section class="f-split f-split--rev" id="inventory">
+  <div class="f-split__content">
+    <div class="sec-ey reveal">
+      <div class="sec-ey__line"></div>
+      <span class="sec-ey__txt">Feature 03 · Inventory</span>
+    </div>
+    <h2 class="f-split__lead reveal d1">
+      Inventory That<br/>
+      Always <em>Knows</em><br/>
+      Where It Stands
+    </h2>
+    <p class="f-split__body reveal d2">
+      Stop losing money to stockouts and overstock. Meray's real-time inventory system keeps every SKU, warehouse, and supplier in sync — automatically updating as sales, purchases, and adjustments happen.
+    </p>
+    <div class="feature-bullets reveal d3" style="margin-bottom:36px">
+      <div class="fb">
+        <div class="fb__dot"></div>
+        <span class="fb__text"><strong>Real-Time Stock Levels</strong> — Quantities update instantly on every sale or purchase order.</span>
+      </div>
+      <div class="fb">
+        <div class="fb__dot"></div>
+        <span class="fb__text"><strong>Low Stock Alerts</strong> — Automatic notifications before you run out of critical items.</span>
+      </div>
+      <div class="fb">
+        <div class="fb__dot"></div>
+        <span class="fb__text"><strong>Purchase Orders</strong> — Raise POs to vendors directly from the inventory module.</span>
+      </div>
+      <div class="fb">
+        <div class="fb__dot"></div>
+        <span class="fb__text"><strong>Product Variants</strong> — Manage sizes, colours, and batches without complexity.</span>
+      </div>
+    </div>
+    <div class="reveal d4">
+      <button class="btn btn-s" style="padding:13px 32px;font-size:12px">Explore Inventory</button>
+    </div>
+  </div>
+  <div class="f-split__img">
+    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=900&q=85&auto=format&fit=crop" alt="Warehouse inventory"/>
+    <div class="f-split__overlay">
+      <div class="f-split__stat">
+        <div class="f-split__stat-lbl">Stock Accuracy</div>
+        <div class="f-split__stat-val">99.2%</div>
+        <div class="f-split__stat-badge">real-time</div>
+      </div>
+      <div class="f-split__stat">
+        <div class="f-split__stat-lbl">Products Tracked</div>
+        <div class="f-split__stat-val">Unlimited</div>
+        <div class="f-split__stat-badge">scalable</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FEATURE 4: ACCOUNTING (dark process-style) ── -->
+<section class="f-accounting" id="accounting">
+  <div class="wrap">
+    <div class="f-accounting__hdr">
+      <div class="reveal">
+        <div class="sec-ey">
+          <div class="sec-ey__line"></div>
+          <span class="sec-ey__txt">Feature 04 · Accounting</span>
+        </div>
+        <h2 class="sec-title" style="color:var(--bg)">
+          Full-Cycle<br/>
+          Accounting<br/>
+          <em style="-webkit-text-stroke:1.5px var(--bg)">Built In</em>
+        </h2>
+      </div>
+      <p class="f-accounting__sub reveal d2">
+        From chart of accounts to bank reconciliation and P&L statements — Meray handles the complete accounting cycle without needing a separate tool.
+      </p>
+    </div>
+
+    <div class="acc-grid">
+      <div class="ac reveal">
+        <div class="ac__phase">Module 01</div>
+        <div class="ac__num">01</div>
+        <div class="ac__title">Chart of Accounts</div>
+        <p class="ac__desc">Define your account structure — assets, liabilities, income, expenses — and map every transaction automatically.</p>
+        <div class="ac__badge"><span>Fully Customisable</span></div>
+      </div>
+      <div class="ac reveal d1">
+        <div class="ac__phase">Module 02</div>
+        <div class="ac__num">02</div>
+        <div class="ac__title">Bank Reconciliation</div>
+        <p class="ac__desc">Match bank transactions to your records with smart matching. Clear discrepancies before they become problems.</p>
+        <div class="ac__badge"><span>Auto-Match</span></div>
+      </div>
+      <div class="ac reveal d2">
+        <div class="ac__phase">Module 03</div>
+        <div class="ac__num">03</div>
+        <div class="ac__title">Expense Recording</div>
+        <p class="ac__desc">Categorise expenses, attach receipts, and record payments against vendors — all linked to your P&L in real time.</p>
+        <div class="ac__badge"><span>Receipt Capture</span></div>
+      </div>
+      <div class="ac reveal d3">
+        <div class="ac__phase">Module 04</div>
+        <div class="ac__num">04</div>
+        <div class="ac__title">Financial Statements</div>
+        <p class="ac__desc">Generate P&L, balance sheet, and cash flow statements on demand. Always audit-ready and accurate.</p>
+        <div class="ac__badge"><span>Instant Reports</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FEATURE 5: REPORTS & INSIGHTS (split) ── -->
+<section class="f-split" id="reports">
+  <div class="f-split__img">
+    <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=900&q=85&auto=format&fit=crop" alt="Analytics and reports"/>
+    <div class="f-split__overlay">
+      <div class="f-split__stat">
+        <div class="f-split__stat-lbl">Report Types</div>
+        <div class="f-split__stat-val">20+</div>
+        <div class="f-split__stat-badge">ready to use</div>
+      </div>
+      <div class="f-split__stat">
+        <div class="f-split__stat-lbl">Data Refresh</div>
+        <div class="f-split__stat-val">Live</div>
+        <div class="f-split__stat-badge">real-time</div>
+      </div>
+    </div>
+  </div>
+  <div class="f-split__content">
+    <div class="sec-ey reveal">
+      <div class="sec-ey__line"></div>
+      <span class="sec-ey__txt">Feature 05 · Reports</span>
+    </div>
+    <h2 class="f-split__lead reveal d1">
+      Insights That<br/>
+      Drive <em>Decisions</em>
+    </h2>
+    <p class="f-split__body reveal d2">
+      Stop waiting for month-end reports. Meray gives you live dashboards and on-demand reports across sales, finances, inventory, and operations — so you always know where your business stands.
+    </p>
+    <div class="feature-bullets reveal d3" style="margin-bottom:36px">
+      <div class="fb">
+        <div class="fb__dot"></div>
+        <span class="fb__text"><strong>Sales Reports</strong> — Revenue by customer, product, or salesperson. Spot your top performers instantly.</span>
+      </div>
+      <div class="fb">
+        <div class="fb__dot"></div>
+        <span class="fb__text"><strong>Cash Flow Summary</strong> — See money coming in and going out across any period at a glance.</span>
+      </div>
+      <div class="fb">
+        <div class="fb__dot"></div>
+        <span class="fb__text"><strong>Inventory Valuation</strong> — Know the exact value of your stock at any point in time.</span>
+      </div>
+      <div class="fb">
+        <div class="fb__dot"></div>
+        <span class="fb__text"><strong>Custom Date Ranges</strong> — Filter any report by day, week, month, quarter, or custom period.</span>
+      </div>
+    </div>
+    <div class="reveal d4">
+      <button class="btn btn-s" style="padding:13px 32px;font-size:12px">See Reports Demo</button>
+    </div>
+  </div>
+</section>
+
+<!-- ── ALL CAPABILITIES ── -->
+<section class="f-caps" id="capabilities">
+  <div class="wrap">
+    <div class="sec-hdr">
+      <div class="reveal">
+        <div class="sec-ey">
+          <div class="sec-ey__line"></div>
+          <span class="sec-ey__txt">Full Capability List</span>
+        </div>
+        <h2 class="sec-title">
+          Every Tool<br/>
+          You'll Ever<br/>
+          <em>Need</em>
+        </h2>
+      </div>
+      <p class="sec-desc reveal d2">
+        A complete breakdown of every module inside Meray — built to replace the patchwork of disconnected tools most businesses rely on.
+      </p>
+    </div>
+
+    <div class="caps-grid">
+      <div class="cap reveal">
+        <div class="cap__num">01</div>
+        <div class="cap__icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <div class="cap__title">Lead Management</div>
+        <p class="cap__desc">Capture, assign, and track leads through a structured sales pipeline with full activity history.</p>
+      </div>
+      <div class="cap reveal d1">
+        <div class="cap__num">02</div>
+        <div class="cap__icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        <div class="cap__title">Customer Profiles</div>
+        <p class="cap__desc">Centralised contact records with communication logs, linked documents, and purchase history.</p>
+      </div>
+      <div class="cap reveal d2">
+        <div class="cap__num">03</div>
+        <div class="cap__icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg></div>
+        <div class="cap__title">Quotations</div>
+        <p class="cap__desc">Create professional quotes, get client approvals, and convert to invoices in one click.</p>
+      </div>
+      <div class="cap reveal d3">
+        <div class="cap__num">04</div>
+        <div class="cap__icon"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div>
+        <div class="cap__title">Invoicing & Billing</div>
+        <p class="cap__desc">Auto-generate invoices, manage payment status, and send reminders for overdue accounts.</p>
+      </div>
+      <div class="cap reveal">
+        <div class="cap__num">05</div>
+        <div class="cap__icon"><svg viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 014-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg></div>
+        <div class="cap__title">Recurring Invoices</div>
+        <p class="cap__desc">Automate billing for retainer clients and subscriptions on weekly, monthly, or custom cycles.</p>
+      </div>
+      <div class="cap reveal d1">
+        <div class="cap__num">06</div>
+        <div class="cap__icon"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></div>
+        <div class="cap__title">Inventory Management</div>
+        <p class="cap__desc">Real-time stock tracking with low-stock alerts, product variants, and warehouse management.</p>
+      </div>
+      <div class="cap reveal d2">
+        <div class="cap__num">07</div>
+        <div class="cap__icon"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
+        <div class="cap__title">Purchase Orders</div>
+        <p class="cap__desc">Raise POs to vendors, track delivery status, and update inventory automatically on receipt.</p>
+      </div>
+      <div class="cap reveal d3">
+        <div class="cap__num">08</div>
+        <div class="cap__icon"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <div class="cap__title">Expense Tracking</div>
+        <p class="cap__desc">Record and categorise every business expense with receipt capture and automatic P&L mapping.</p>
+      </div>
+      <div class="cap reveal">
+        <div class="cap__num">09</div>
+        <div class="cap__icon"><svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div>
+        <div class="cap__title">Vendor Management</div>
+        <p class="cap__desc">Maintain complete supplier profiles, track outstanding payables, and manage vendor contracts.</p>
+      </div>
+      <div class="cap reveal d1">
+        <div class="cap__num">10</div>
+        <div class="cap__icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <div class="cap__title">Bank Reconciliation</div>
+        <p class="cap__desc">Match bank statements to your records automatically and flag discrepancies before month-end.</p>
+      </div>
+      <div class="cap reveal d2">
+        <div class="cap__num">11</div>
+        <div class="cap__icon"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+        <div class="cap__title">Financial Reports</div>
+        <p class="cap__desc">P&L, balance sheet, cash flow, and tax summaries — generated instantly with live data.</p>
+      </div>
+      <div class="cap reveal d3">
+        <div class="cap__num">12</div>
+        <div class="cap__icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <div class="cap__title">Business Dashboard</div>
+        <p class="cap__desc">A single home screen showing sales, collections, inventory health, and financials in real time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DARK FEATURE GRID: ADVANCED TOOLS ── -->
+<section class="f-grid-sec f-grid-sec--dark" id="advanced">
+  <div class="wrap">
+    <div class="sec-hdr" style="margin-bottom:64px">
+      <div class="reveal">
+        <div class="sec-ey">
+          <div class="sec-ey__line" style="background:var(--green)"></div>
+          <span class="sec-ey__txt" style="color:rgba(246,244,232,0.4);opacity:1">Advanced Capabilities</span>
+        </div>
+        <h2 class="sec-title" style="color:var(--bg)">
+          More Power<br/>
+          Under The<br/>
+          <em style="-webkit-text-stroke:1.5px var(--bg)">Hood</em>
+        </h2>
+      </div>
+      <p class="sec-desc sec-desc--light reveal d2">
+        Beyond the core modules, Meray includes a suite of advanced tools to help growing businesses operate with precision and speed.
+      </p>
+    </div>
+
+    <div class="feat-grid feat-grid--dark">
+      <div class="fg fg--dark" data-n="A">
+        <div class="fg__tag"><div class="fg__tag-dot"></div><span class="fg__tag-txt">Data</span></div>
+        <div class="fg__icon"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+        <h3 class="fg__title">Data Migration</h3>
+        <p class="fg__desc">Import your existing data from spreadsheets or other tools quickly. Our team assists with a smooth transition.</p>
+        <a href="#" class="fg__lnk">Learn More <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+      </div>
+
+      <div class="fg fg--dark" data-n="B">
+        <div class="fg__tag"><div class="fg__tag-dot"></div><span class="fg__tag-txt">Security</span></div>
+        <div class="fg__icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3 class="fg__title">Role-Based Access</h3>
+        <p class="fg__desc">Control exactly who can see and do what. Set granular permissions per module for every team member.</p>
+        <a href="#" class="fg__lnk">Learn More <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+      </div>
+
+      <div class="fg fg--dark" data-n="C">
+        <div class="fg__tag"><div class="fg__tag-dot"></div><span class="fg__tag-txt">Mobile</span></div>
+        <div class="fg__icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+        <h3 class="fg__title">Mobile Ready</h3>
+        <p class="fg__desc">Access your business from anywhere. Meray is fully responsive and works on any device without an app download.</p>
+        <a href="#" class="fg__lnk">Learn More <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+      </div>
+
+      <div class="fg fg--dark fg--wide" data-n="D">
+        <div class="fg__content">
+          <div class="fg__tag"><div class="fg__tag-dot"></div><span class="fg__tag-txt">Scalability</span></div>
+          <div class="fg__icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <h3 class="fg__title">Grows With Your Business</h3>
+          <p class="fg__desc">Whether you're a 2-person startup or a 200-person operation, Meray scales with you. Add users, modules, and data without hitting a ceiling or switching platforms.</p>
+          <a href="#" class="fg__lnk">Learn More <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+        </div>
+        <div class="fg__visual">
+          <div class="mm"><span class="mm__lbl">Users Supported</span><div class="mm__right"><span class="mm__val">Unlimited</span><span class="mm__badge">scalable</span></div></div>
+          <div class="mm"><span class="mm__lbl">Data Storage</span><div class="mm__right"><span class="mm__val">Cloud</span><span class="mm__badge">secure</span></div></div>
+          <div class="mm"><span class="mm__lbl">Uptime SLA</span><div class="mm__right"><span class="mm__val">99.9%</span><span class="mm__badge">reliable</span></div></div>
+        </div>
+      </div>
+
+      <div class="fg fg--dark" data-n="E">
+        <div class="fg__tag"><div class="fg__tag-dot"></div><span class="fg__tag-txt">Support</span></div>
+        <div class="fg__icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+        <h3 class="fg__title">Dedicated Support</h3>
+        <p class="fg__desc">Get help when you need it. Our support team responds within 24–48 hours and helps with onboarding, training, and troubleshooting.</p>
+        <a href="#" class="fg__lnk">Learn More <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA BAND ── -->
+<div class="f-cta-band">
+  <div class="f-cta-band__inner reveal">
+    <h2 class="f-cta-band__title">
+      Ready To Run<br/>
+      Your Business<br/>
+      <em>Better?</em>
+    </h2>
+    <p class="f-cta-band__sub">
+      Join thousands of businesses already using Meray to manage leads, invoices, inventory, and finances — all in one place.
+    </p>
+    <div class="f-cta-band__btns">
+      <!-- <button class="btn-green">Start Free Trial</button> -->
+      <button class="btn-ghost">Book a Demo</button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer-v2">
+  <div class="fv2__top">
+    <div class="fv2__brand">
+      <img src="logo_circle.png" alt="Merzaai" class="fv2__logo"/>
+      <p class="fv2__tagline">Where commercial decisions<br/>become cash outcomes.</p>
+<div class="fv2__socials">
+  <a href="https://www.linkedin.com/company/meray-cloud/?viewAsMember=true" target="_blank" rel="noopener noreferrer" class="fv2__social" aria-label="LinkedIn">
+    <svg viewBox="0 0 24 24">
+      <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/>
+      <rect x="2" y="9" width="4" height="12"/>
+      <circle cx="4" cy="4" r="2"/>
+    </svg>
+  </a>
+  <a href="https://wa.me/971589259642?text=Hello%20Meray%20team%2C%20I'd%20like%20to%20know%20more%20about%20your%20platform." target="_blank" rel="noopener noreferrer" class="fv2__social" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24">
+      <path d="M12 2C6.48 2 2 6.48 2 12c0 1.89.52 3.66 1.42 5.17L2 22l5.19-1.42A9.95 9.95 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.75 0-3.37-.57-4.69-1.52l-.34-.24-3.11.85.85-3.13-.24-.34A7.94 7.94 0 014 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8z"/>
+      <path d="M16.67 13.56c-.27-.14-1.59-.79-1.83-.88-.25-.09-.43-.14-.61.14-.19.27-.73.88-.89 1.06-.16.18-.32.2-.6.06a7.5 7.5 0 01-2.19-1.34c-.83-.72-1.38-1.6-1.54-1.87-.16-.27-.02-.42.12-.56.12-.12.27-.32.41-.48.14-.16.18-.28.27-.46.09-.18.05-.35-.03-.48-.08-.14-.61-1.46-.84-1.99-.22-.52-.44-.43-.61-.44h-.52c-.18 0-.46.08-.7.37-.24.29-.92.9-.92 2.18 0 1.28.93 2.51 1.06 2.69.13.18 1.82 2.78 4.41 3.9.62.26 1.1.42 1.48.54.62.2 1.19.17 1.64.1.5-.08 1.59-.65 1.81-1.27.22-.62.22-1.15.15-1.27-.07-.12-.27-.19-.54-.33z"/>
+    </svg>
+  </a>
+</div>
+    </div>
+    <div class="fv2__cols">
+      <div class="fv2__col">
+        <div class="fv2__col-head">Features</div>
+        <a href="features.html" class="fv2__lnk">Smart Invoicing</a>
+        <a href="features.html" class="fv2__lnk">CRM & Lead Management</a>
+        <a href="features.html" class="fv2__lnk">Expense & Vendor Mgmt</a>
+        <a href="features.html" class="fv2__lnk">Reports & Insights</a>
+        <a href="features.html" class="fv2__lnk">Business Dashboard</a>
+      </div>
+      <div class="fv2__col">
+        <div class="fv2__col-head">Company</div>
+        <a href="index.html" class="fv2__lnk">Home</a>
+        <a href="meray-about.html" class="fv2__lnk">About Meray</a>
+        <a href="features.html" class="fv2__lnk">Features</a>
+        <a href="testimonails.html" class="fv2__lnk">Testimonials</a>
+        <a href="contact.html" class="fv2__lnk">Contact</a>
+      </div>
+      <div class="fv2__col">
+        <div class="fv2__col-head">Get In Touch</div>
+        <p class="fv2__addr">Meydan , Freezone , Dubai<br/>United Arab Emirates</p>
+        <a href="mailto:advisory@merzaai.com" class="fv2__lnk">advisory@merzaai.com</a>
+    
+      </div>
+    </div>
+  </div>
+  <div class="fv2__bottom">
+    <span class="fv2__copy">© 2025 Merzaai Advisory. All rights reserved.</span>
+    <div class="fv2__legal">
+      <a href="#" class="fv2__legal-lnk">Privacy Policy</a>
+      <a href="#" class="fv2__legal-lnk">Terms of Use</a>
+      <a href="#" class="fv2__legal-lnk">Cookie Policy</a>
+    </div>
+    <span class="fv2__region">UAE · GCC · MENA</span>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

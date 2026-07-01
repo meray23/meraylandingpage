@@ -1,0 +1,1351 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact · Meray — All-in-One CRM & Accounting Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ─── RESET & ROOT ─── */
+      :root {
+        --bg: #f6f4e8;
+        --ink: #375b6d;
+        --ink-dark: #1c2b33;
+        --ink-faint: rgba(54, 91, 109, 0.1);
+        --ink-mid: rgba(54, 91, 109, 0.22);
+        --white: #ffffff;
+        --warm: #efede0;
+        --warm-deep: #e8e5d4;
+        --green: #9ee8b8;
+        --green-dim: rgba(158, 232, 184, 0.18);
+        --whatsapp: #25d366;
+        --whatsapp-dark: #128c7e;
+        --font-head: "Teko", sans-serif;
+        --font-body: "Roboto", sans-serif;
+        --h: 68px;
+        --r: 3px;
+        --page-max: 1400px;
+        --page-pad: 5%;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--bg);
+        color: var(--ink);
+        font-family: var(--font-body);
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      button {
+        font-family: var(--font-body);
+        cursor: pointer;
+        border: none;
+        background: none;
+      }
+      img {
+        display: block;
+      }
+
+      img:not(.fv2__logo) {
+        
+      }
+      .fv2__logo {
+        filter: brightness(0) invert(1);
+      }
+
+      .wrap {
+        max-width: var(--page-max);
+        margin: 0 auto;
+        padding: 0 var(--page-pad);
+      }
+
+      .sec-ey {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 18px;
+      }
+      .sec-ey__line {
+        width: 24px;
+        height: 1px;
+        background: var(--ink);
+        flex-shrink: 0;
+      }
+      .sec-ey__txt {
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--ink-dark);
+        opacity: 0.55;
+      }
+      .sec-title {
+        font-family: var(--font-head);
+        font-size: clamp(40px, 4.8vw, 68px);
+        font-weight: 700;
+        line-height: 0.95;
+        text-transform: uppercase;
+        color: var(--ink);
+      }
+      .sec-title em {
+        font-style: normal;
+        color: transparent;
+        -webkit-text-stroke: 1.5px var(--ink);
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(22px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .d1 {
+        transition-delay: 0.1s;
+      }
+      .d2 {
+        transition-delay: 0.2s;
+      }
+      .d3 {
+        transition-delay: 0.3s;
+      }
+      .d4 {
+        transition-delay: 0.4s;
+      }
+      .d5 {
+        transition-delay: 0.5s;
+      }
+
+      .btn {
+        font-family: var(--font-body);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        border-radius: var(--r);
+        cursor: pointer;
+        transition: all 0.2s;
+        display: inline-flex;
+        align-items: center;
+      }
+      .btn-o {
+        border: 1px solid var(--ink-mid);
+        color: var(--ink);
+        background: transparent;
+        padding: 10px 22px;
+      }
+      .btn-o:hover {
+        background: var(--ink-faint);
+        border-color: var(--ink);
+      }
+      .btn-s {
+        background: var(--ink);
+        color: var(--white);
+        padding: 11px 24px;
+        border: 1px solid var(--ink);
+      }
+      .btn-s:hover {
+        background: var(--ink-dark);
+      }
+
+      /* ─── HEADER ─── */
+      .hdr {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: var(--h);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 var(--page-pad);
+        z-index: 200;
+        background: rgba(246, 244, 232, 0.88);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--ink-faint);
+      }
+      .hdr__logo img {
+        height: 46px;
+        width: auto;
+        
+      }
+      .hdr__nav {
+        display: flex;
+        gap: 36px;
+        align-items: center;
+      }
+      .nav-lnk {
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        color: var(--ink-dark);
+        opacity: 0.6;
+        transition: opacity 0.2s;
+        position: relative;
+        padding-bottom: 3px;
+      }
+      .nav-lnk::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: var(--ink);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.25s;
+      }
+      .nav-lnk:hover {
+        opacity: 1;
+      }
+      .nav-lnk:hover::after {
+        transform: scaleX(1);
+      }
+      .nav-lnk--on {
+        opacity: 1;
+      }
+      .nav-lnk--on::after {
+        transform: scaleX(1);
+      }
+      .hdr__actions {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      /* ─── PAGE HERO ─── */
+      .page-hero {
+        min-height: 520px;
+        display: flex;
+        align-items: center;
+        padding-top: var(--h);
+        background: var(--ink-dark);
+        position: relative;
+        overflow: hidden;
+      }
+      .page-hero::before {
+        content: "CONTACT";
+        position: absolute;
+        right: -40px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-family: var(--font-head);
+        font-size: 260px;
+        font-weight: 700;
+        color: rgba(246, 244, 232, 0.022);
+        line-height: 1;
+        pointer-events: none;
+        letter-spacing: -14px;
+        white-space: nowrap;
+      }
+      .page-hero__inner {
+        max-width: var(--page-max);
+        margin: 0 auto;
+        padding: 60px var(--page-pad);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+        width: 100%;
+      }
+      .page-hero__eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 24px;
+      }
+      .page-hero__eyebrow__line {
+        width: 28px;
+        height: 1px;
+        background: var(--green);
+      }
+      .page-hero__eyebrow__text {
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: rgba(246, 244, 232, 0.45);
+      }
+      .page-hero__h1 {
+        font-family: var(--font-head);
+        font-size: clamp(52px, 6vw, 96px);
+        font-weight: 700;
+        line-height: 0.92;
+        text-transform: uppercase;
+        color: var(--bg);
+        letter-spacing: 1px;
+      }
+      .page-hero__h1 em {
+        font-style: normal;
+        color: transparent;
+        -webkit-text-stroke: 1.5px var(--bg);
+      }
+      .page-hero__right {
+      }
+      .page-hero__sub {
+        font-size: 15px;
+        font-weight: 300;
+        color: rgba(246, 244, 232, 0.5);
+        line-height: 1.85;
+        margin-bottom: 0;
+        max-width: 420px;
+      }
+
+      /* ─── CONTACT SECTION ─── */
+      .contact-section {
+        padding: 100px 0;
+      }
+      .contact-section__inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: start;
+      }
+      .contact-section__info {
+      }
+      .contact-section__desc {
+        font-size: 18px;  /* bigger */
+        font-weight: 300;
+        color: var(--ink-dark);
+        line-height: 1.88;
+        opacity: 0.68;
+        margin-bottom: 48px;
+        max-width: 400px;
+      }
+      .contact-section__cards {
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+        background: var(--ink-faint);
+        border: 1px solid var(--ink-faint);
+        border-radius: var(--r);
+        overflow: hidden;
+        margin-bottom: 40px;
+      }
+      .contact-card {
+        background: var(--bg);
+        padding: 28px 28px;
+        display: flex;
+        align-items: flex-start;
+        gap: 20px;
+        transition: background 0.3s;
+      }
+      .contact-card:hover {
+        background: var(--warm);
+      }
+      .contact-card__icon {
+        width: 44px;
+        height: 44px;
+        background: var(--ink-dark);
+        border-radius: var(--r);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .contact-card__icon svg {
+        width: 18px;
+        height: 18px;
+        stroke: var(--green);
+        fill: none;
+        stroke-width: 1.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .contact-card__label {
+        font-size: 9px;
+        font-weight: 500;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--ink);
+        opacity: 0.4;
+        margin-bottom: 6px;
+      }
+      .contact-card__value {
+        font-family: var(--font-head);
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--ink-dark);
+        letter-spacing: 0.5px;
+        line-height: 1.2;
+      }
+      .contact-card__sub {
+        font-size: 12px;
+        font-weight: 300;
+        color: var(--ink);
+        opacity: 0.5;
+        margin-top: 4px;
+      }
+      .contact-section__socials {
+        display: flex;
+        gap: 8px;
+      }
+      .contact-section__social {
+        width: 40px;
+        height: 40px;
+        border: 1px solid var(--ink-mid);
+        border-radius: var(--r);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition:
+          border-color 0.2s,
+          background 0.2s;
+      }
+      .contact-section__social:hover {
+        border-color: var(--ink);
+        background: var(--ink-faint);
+      }
+      .contact-section__social svg {
+        width: 15px;
+        height: 15px;
+        stroke: var(--ink);
+        fill: none;
+        stroke-width: 1.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      /* ─── WHATSAPP CARD (bigger) ─── */
+      .whatsapp-card {
+        background: var(--warm);
+        border: 1px solid var(--ink-faint);
+        border-radius: var(--r);
+        padding: 56px 48px;  /* bigger */
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: background 0.2s;
+      }
+      .whatsapp-card:hover {
+        background: var(--warm-deep);
+      }
+      .whatsapp-card__icon {
+        width: 88px;        /* bigger */
+        height: 88px;
+        background: var(--whatsapp);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 28px;
+        box-shadow: 0 8px 20px rgba(37, 211, 102, 0.25);
+        transition: transform 0.2s;
+      }
+      .whatsapp-card:hover .whatsapp-card__icon {
+        transform: scale(1.03);
+      }
+      .whatsapp-card__icon svg {
+        width: 48px;       /* bigger */
+        height: 48px;
+        fill: white;
+      }
+      .whatsapp-card__title {
+        font-family: var(--font-head);
+        font-size: 34px;   /* bigger */
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--ink-dark);
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+      }
+      .whatsapp-card__sub {
+        font-size: 16px;   /* bigger */
+        font-weight: 300;
+        color: var(--ink);
+        opacity: 0.65;
+        margin-bottom: 32px;
+        max-width: 380px;
+      }
+      /* number removed — replaced by descriptive paragraph */
+      .whatsapp-card__availability {
+        font-size: 16px;
+        font-weight: 400;
+        color: var(--ink-dark);
+        background: rgba(54, 91, 109, 0.06);
+        padding: 10px 24px;
+        border-radius: 40px;
+        border: 1px solid var(--ink-faint);
+        margin-bottom: 32px;
+        max-width: 440px;
+        line-height: 1.6;
+        opacity: 0.8;
+      }
+      .whatsapp-card__availability strong {
+        font-weight: 500;
+        color: var(--ink-dark);
+        opacity: 1;
+      }
+      .whatsapp-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        background: var(--whatsapp);
+        color: white;
+        padding: 18px 48px;   /* bigger */
+        border-radius: 60px;
+        font-family: var(--font-body);
+        font-size: 16px;      /* bigger */
+        font-weight: 500;
+        letter-spacing: 0.3px;
+        transition: background 0.2s, transform 0.15s;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
+      }
+      .whatsapp-btn:hover {
+        background: var(--whatsapp-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+      }
+      .whatsapp-btn svg {
+        width: 24px;
+        height: 24px;
+        fill: white;
+      }
+      .whatsapp-note {
+        margin-top: 24px;
+        font-size: 13px;
+        font-weight: 300;
+        color: var(--ink);
+        opacity: 0.5;
+      }
+      .whatsapp-note a {
+        color: var(--whatsapp-dark);
+        font-weight: 400;
+        text-decoration: underline;
+        opacity: 0.8;
+      }
+
+      /* ─── OFFICES ─── */
+      .offices {
+        padding: 80px 0 100px;
+        background: var(--warm);
+        border-top: 1px solid var(--ink-faint);
+        border-bottom: 1px solid var(--ink-faint);
+      }
+      .offices__grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1px;
+        background: var(--ink-faint);
+        border: 1px solid var(--ink-faint);
+        border-radius: var(--r);
+        overflow: hidden;
+        max-width: 920px;
+        margin: 56px auto 0;
+      }
+      .office-card {
+        background: var(--bg);
+        padding: 40px 32px;
+        transition: background 0.3s;
+      }
+      .office-card:hover {
+        background: var(--warm-deep);
+      }
+      .office-card__city {
+        font-family: var(--font-head);
+        font-size: 26px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--ink-dark);
+        letter-spacing: 0.5px;
+        margin-bottom: 16px;
+      }
+      .office-card__address {
+        font-size: 13px;
+        font-weight: 300;
+        color: var(--ink-dark);
+        line-height: 1.82;
+        opacity: 0.62;
+        margin-bottom: 16px;
+      }
+      .office-card__phone {
+        font-size: 12px;
+        font-weight: 400;
+        color: var(--ink);
+        opacity: 0.55;
+      }
+
+      /* ─── FAQ TEASER ─── */
+      .faq-teaser {
+        padding: 100px 0;
+      }
+      .faq-teaser__inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+      }
+      .faq-teaser__lead {
+        font-family: var(--font-head);
+        font-size: clamp(24px, 2.8vw, 40px);
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--ink-dark);
+        line-height: 1.1;
+        margin-bottom: 16px;
+      }
+      .faq-teaser__body {
+        font-size: 14px;
+        font-weight: 300;
+        color: var(--ink-dark);
+        line-height: 1.88;
+        opacity: 0.68;
+        margin-bottom: 28px;
+        max-width: 400px;
+      }
+      .faq-teaser__link {
+        font-family: var(--font-body);
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--ink);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border-bottom: 1px solid var(--ink-mid);
+        padding-bottom: 4px;
+        transition:
+          gap 0.2s,
+          border-color 0.2s;
+      }
+      .faq-teaser__link:hover {
+        gap: 12px;
+        border-color: var(--ink);
+      }
+      .faq-teaser__link svg {
+        width: 14px;
+        height: 14px;
+        stroke: var(--ink);
+        fill: none;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .faq-teaser__img {
+        position: relative;
+        border-radius: var(--r);
+        overflow: hidden;
+        aspect-ratio: 4/3;
+      }
+      .faq-teaser__img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* ─── CTA BAND ─── */
+      .cta-band {
+        background: var(--ink-dark);
+        padding: 100px 0;
+        position: relative;
+        overflow: hidden;
+      }
+      .cta-band::before {
+        content: "START";
+        position: absolute;
+        right: -20px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-family: var(--font-head);
+        font-size: 260px;
+        font-weight: 700;
+        color: rgba(246, 244, 232, 0.025);
+        line-height: 1;
+        pointer-events: none;
+        letter-spacing: -12px;
+      }
+      .cta-band__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 60px;
+        flex-wrap: wrap;
+      }
+      .cta-band__title {
+        font-family: var(--font-head);
+        font-size: clamp(36px, 4vw, 64px);
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--bg);
+        line-height: 0.95;
+      }
+      .cta-band__title em {
+        font-style: normal;
+        color: transparent;
+        -webkit-text-stroke: 1.5px var(--bg);
+      }
+      .cta-band__right {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .btn-light {
+        background: var(--bg);
+        color: var(--ink-dark);
+        padding: 13px 32px;
+        font-size: 12px;
+        border: 1px solid var(--bg);
+        border-radius: var(--r);
+      }
+      .btn-light:hover {
+        background: var(--warm);
+      }
+      .btn-outline-light {
+        border: 1px solid rgba(246, 244, 232, 0.25);
+        color: var(--bg);
+        padding: 12px 28px;
+        font-size: 12px;
+        border-radius: var(--r);
+        transition: all 0.2s;
+      }
+      .btn-outline-light:hover {
+        background: rgba(246, 244, 232, 0.07);
+        border-color: rgba(246, 244, 232, 0.5);
+      }
+
+      /* ─── FOOTER V2 ─── */
+      .footer-v2 {
+        background: var(--ink-dark);
+        border-top: 1px solid rgba(246, 244, 232, 0.07);
+      }
+      .fv2__top {
+        padding: 72px var(--page-pad) 56px;
+        max-width: var(--page-max);
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 260px 1fr;
+        gap: 80px;
+        border-bottom: 1px solid rgba(246, 244, 232, 0.07);
+        align-items: start;
+      }
+      .fv2__logo {
+        height: 40px;
+        width: auto;
+        margin-bottom: 18px;
+        opacity: 0.8;
+      }
+      .fv2__tagline {
+        font-size: 12.5px;
+        font-weight: 300;
+        color: rgba(246, 244, 232, 0.38);
+        line-height: 1.8;
+        margin-bottom: 28px;
+      }
+      .fv2__socials {
+        display: flex;
+        gap: 8px;
+      }
+      .fv2__social {
+        width: 32px;
+        height: 32px;
+        border: 1px solid rgba(246, 244, 232, 0.12);
+        border-radius: var(--r);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition:
+          border-color 0.2s,
+          background 0.2s;
+      }
+      .fv2__social:hover {
+        border-color: rgba(246, 244, 232, 0.28);
+        background: rgba(246, 244, 232, 0.05);
+      }
+      .fv2__social svg {
+        width: 13px;
+        height: 13px;
+        stroke: rgba(246, 244, 232, 0.45);
+        fill: none;
+        stroke-width: 1.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .fv2__cols {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+      }
+      .fv2__col {
+        display: flex;
+        flex-direction: column;
+        gap: 11px;
+      }
+      .fv2__col-head {
+        font-size: 9px;
+        font-weight: 500;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        color: rgba(246, 244, 232, 0.28);
+        margin-bottom: 6px;
+      }
+      .fv2__lnk {
+        font-size: 12.5px;
+        font-weight: 300;
+        color: rgba(246, 244, 232, 0.5);
+        transition: color 0.2s;
+        line-height: 1;
+      }
+      .fv2__lnk:hover {
+        color: rgba(246, 244, 232, 0.85);
+      }
+      .fv2__addr {
+        font-size: 12.5px;
+        font-weight: 300;
+        color: rgba(246, 244, 232, 0.32);
+        line-height: 1.72;
+      }
+      .fv2__cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        margin-top: 6px;
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--green);
+        transition: gap 0.2s;
+      }
+      .fv2__cta:hover {
+        gap: 11px;
+      }
+      .fv2__cta svg {
+        width: 12px;
+        height: 12px;
+        stroke: var(--green);
+        fill: none;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .fv2__bottom {
+        max-width: var(--page-max);
+        margin: 0 auto;
+        padding: 22px var(--page-pad);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+      .fv2__copy {
+        font-size: 11px;
+        color: rgba(246, 244, 232, 0.22);
+      }
+      .fv2__legal {
+        display: flex;
+        gap: 22px;
+      }
+      .fv2__legal-lnk {
+        font-size: 11px;
+        color: rgba(246, 244, 232, 0.22);
+        transition: color 0.2s;
+      }
+      .fv2__legal-lnk:hover {
+        color: rgba(246, 244, 232, 0.55);
+      }
+      .fv2__region {
+        font-size: 9px;
+        font-weight: 500;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: rgba(246, 244, 232, 0.18);
+      }
+
+      /* ─── KEYFRAMES ─── */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ─── RESPONSIVE ─── */
+      @media (max-width: 1100px) {
+        .page-hero {
+          min-height: auto;
+        }
+        .page-hero__inner,
+        .contact-section__inner,
+        .faq-teaser__inner {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+        .offices__grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .cta-band__inner {
+          flex-direction: column;
+          gap: 36px;
+        }
+        .fv2__top {
+          grid-template-columns: 1fr;
+          gap: 48px;
+        }
+      }
+      @media (max-width: 768px) {
+        .hdr__nav {
+          display: none;
+        }
+        .offices__grid {
+          grid-template-columns: 1fr;
+        }
+        .whatsapp-card {
+          padding: 40px 24px;
+        }
+        .fv2__cols {
+          grid-template-columns: 1fr 1fr;
+        }
+        .fv2__bottom {
+          flex-direction: column;
+          text-align: center;
+          gap: 12px;
+        }
+        .fv2__legal {
+          justify-content: center;
+        }
+        .contact-section__desc {
+          font-size: 16px;
+          max-width: 100%;
+        }
+        .whatsapp-card__availability {
+          font-size: 14px;
+          padding: 10px 18px;
+        }
+      }
+      @media (max-width: 480px) {
+        .fv2__cols {
+          grid-template-columns: 1fr;
+        }
+        .whatsapp-btn {
+          padding: 16px 28px;
+          font-size: 14px;
+        }
+        .whatsapp-card__title {
+          font-size: 28px;
+        }
+        .whatsapp-card__sub {
+          font-size: 14px;
+        }
+        .whatsapp-card__availability {
+          font-size: 13px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="hdr">
+      <div class="hdr__logo">
+        <img
+          src="logo_circle.png"
+          alt="Merzaai"
+        />
+      </div>
+      <nav class="hdr__nav">
+           <a href="index.html" class="nav-lnk ">Home</a>
+        <a href="meray-about.html" class="nav-lnk ">About</a>
+        <a href="features.html" class="nav-lnk ">Features</a>
+        <a href="testimonails.html" class="nav-lnk">Testimonials</a>
+        <a href="contact.html" class="nav-lnk nav-lnk--on">Contact</a>
+      </nav>
+
+
+ 
+<link rel="stylesheet" href="mobile-nav.css">
+<script src="mobile-nav.js" defer></script>
+
+
+<div class="hdr__actions">
+
+   <a href="https://meray.cloud/login">
+        <button class="btn btn-s">Sign In</button>
+    </a>
+
+  <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+    </button>
+ 
+
+
+   
+</div>
+
+
+    </header>
+
+
+        <div class="drawer-overlay" id="drawerOverlay"></div>
+
+<nav class="hdr__nav-drawer" id="mobileDrawer">
+    <button class="drawer-close" id="drawerCloseBtn">✕</button>
+    <a href="index.html" class="nav-lnk nav-lnk--on">Home</a>
+    <a href="meray-about.html" class="nav-lnk">About</a>
+    <a href="features.html" class="nav-lnk">Features</a>
+    <a href="testimonails.html" class="nav-lnk">Testimonials</a>
+    <a href="contact.html" class="nav-lnk">Contact</a>
+    <div class="drawer-footer">
+    <p>Where commercial decisions<br/>become cash outcomes.</p>
+    <a href="https://meray.cloud/login" class="drawer-cta">Sign In</a>
+    
+    
+  </div>
+</nav>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+      <div class="page-hero__inner">
+        <div style="animation: fadeUp 0.8s 0.15s both">
+          <div class="page-hero__eyebrow">
+            <div class="page-hero__eyebrow__line"></div>
+            <span class="page-hero__eyebrow__text">Get In Touch</span>
+          </div>
+          <h1 class="page-hero__h1">
+            Let's Start<br />
+            A<br />
+            <em>Conversation</em>
+          </h1>
+        </div>
+        <div class="page-hero__right" style="animation: fadeUp 0.8s 0.3s both">
+          <p class="page-hero__sub">
+            Whether you're exploring Meray for your business, need support, or
+            want to partner with us — we're here to help. Reach out and we'll
+            respond within 24 hours.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact-section">
+      <div class="wrap">
+        <div class="contact-section__inner">
+          <!-- Left: Info -->
+          <div class="contact-section__info">
+            <div class="sec-ey reveal">
+              <div class="sec-ey__line"></div>
+              <span class="sec-ey__txt">Contact Details</span>
+            </div>
+            <h2 class="sec-title reveal d1">
+              Talk To<br />
+              <em>Our Team</em>
+            </h2>
+            <br>
+            <!-- <p class="contact-section__desc reveal d2">
+              Our support team is available Monday through Saturday, 9 AM to
+              7 PM IST. We typically respond within 2 hours during business
+              hours.
+            </p> -->
+
+            <div class="contact-section__cards reveal d3">
+              <div class="contact-card">
+                <div class="contact-card__icon">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <polyline points="22,6 12,13 2,6" />
+                  </svg>
+                </div>
+                <div>
+                  <div class="contact-card__label">Email</div>
+                  <div class="contact-card__value">merzaaihostinger@gmail.com</div>
+                  <div class="contact-card__sub">For general inquiries & support</div>
+                </div>
+              </div>
+              <div class="contact-card">
+                <div class="contact-card__icon">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
+                  </svg>
+                </div>
+                <div>
+                  <div class="contact-card__label">Phone</div>
+                  <div class="contact-card__value">+971 5829259642</div>
+                  <div class="contact-card__sub">Toll-free, Mon–Sat 9AM–7PM IST</div>
+                </div>
+              </div>
+              <div class="contact-card">
+                <div class="contact-card__icon">
+                  <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
+                  </svg>
+                </div>
+                <div>
+                  <div class="contact-card__label">Response Time</div>
+                  <div class="contact-card__value">Within 24 Hours</div>
+                  <div class="contact-card__sub">Most queries resolved same day</div>
+                </div>
+              </div>
+            </div>
+
+           
+          </div>
+
+          <!-- Right: WhatsApp Card (bigger, no phone number, with availability paragraph) -->
+          <div class="reveal d2">
+            <div class="whatsapp-card">
+              <div class="whatsapp-card__icon">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 2C6.48 2 2 6.48 2 12c0 1.89.52 3.66 1.42 5.17L2 22l5.19-1.42A9.95 9.95 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.75 0-3.37-.57-4.69-1.52l-.34-.24-3.11.85.85-3.13-.24-.34A7.94 7.94 0 014 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8z"/>
+                  <path d="M16.67 13.56c-.27-.14-1.59-.79-1.83-.88-.25-.09-.43-.14-.61.14-.19.27-.73.88-.89 1.06-.16.18-.32.2-.6.06a7.5 7.5 0 01-2.19-1.34c-.83-.72-1.38-1.6-1.54-1.87-.16-.27-.02-.42.12-.56.12-.12.27-.32.41-.48.14-.16.18-.28.27-.46.09-.18.05-.35-.03-.48-.08-.14-.61-1.46-.84-1.99-.22-.52-.44-.43-.61-.44h-.52c-.18 0-.46.08-.7.37-.24.29-.92.9-.92 2.18 0 1.28.93 2.51 1.06 2.69.13.18 1.82 2.78 4.41 3.9.62.26 1.1.42 1.48.54.62.2 1.19.17 1.64.1.5-.08 1.59-.65 1.81-1.27.22-.62.22-1.15.15-1.27-.07-.12-.27-.19-.54-.33z"/>
+                </svg>
+              </div>
+              <h3 class="whatsapp-card__title">Chat with us</h3>
+              <p class="whatsapp-card__sub">
+                Quick questions? Our team is available on WhatsApp.
+                Tap the button below to start a conversation.
+              </p>
+
+              <!-- availability paragraph instead of phone number -->
+              <div class="whatsapp-card__availability">
+                 Our support team is available
+                Monday through Saturday, 9 AM to 7 PM IST. We typically respond
+                within 2 hours during business hours.
+              </div>
+
+              <a
+                href="https://wa.me/971589259642?text=Hello%20Meray%20team%2C%20I'd%20like%20to%20know%20more%20about%20your%20platform."
+                target="_blank"
+                rel="noopener noreferrer"
+                class="whatsapp-btn"
+              >
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 2C6.48 2 2 6.48 2 12c0 1.89.52 3.66 1.42 5.17L2 22l5.19-1.42A9.95 9.95 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.75 0-3.37-.57-4.69-1.52l-.34-.24-3.11.85.85-3.13-.24-.34A7.94 7.94 0 014 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8z"/>
+                  <path d="M16.67 13.56c-.27-.14-1.59-.79-1.83-.88-.25-.09-.43-.14-.61.14-.19.27-.73.88-.89 1.06-.16.18-.32.2-.6.06a7.5 7.5 0 01-2.19-1.34c-.83-.72-1.38-1.6-1.54-1.87-.16-.27-.02-.42.12-.56.12-.12.27-.32.41-.48.14-.16.18-.28.27-.46.09-.18.05-.35-.03-.48-.08-.14-.61-1.46-.84-1.99-.22-.52-.44-.43-.61-.44h-.52c-.18 0-.46.08-.7.37-.24.29-.92.9-.92 2.18 0 1.28.93 2.51 1.06 2.69.13.18 1.82 2.78 4.41 3.9.62.26 1.1.42 1.48.54.62.2 1.19.17 1.64.1.5-.08 1.59-.65 1.81-1.27.22-.62.22-1.15.15-1.27-.07-.12-.27-.19-.54-.33z"/>
+                </svg>
+                Message us on WhatsApp
+              </a>
+              <p class="whatsapp-note">
+                Or email us at <a href="mailto:merzaaihostinger@gmail.com">merzaaihostinger@gmail.com</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OFFICES -->
+    <section class="offices">
+      <div class="wrap">
+        <div class="reveal">
+          <div class="sec-ey">
+            <div class="sec-ey__line"></div>
+            <span class="sec-ey__txt">Our Locations</span>
+          </div>
+          <h2 class="sec-title">
+            Find<br />
+            <em>Us Here</em>
+          </h2>
+        </div>
+
+        <div class="offices__grid">
+          <div class="office-card reveal">
+            <div class="office-card__city">Dubai</div>
+            <p class="office-card__address">
+              Meray Technologies<br />
+              Meydan Free Zone<br />
+              Meydan Grandstand, 6th Floor<br />
+              Dubai, UAE
+            </p>
+            <div class="office-card__phone">+971 5829259642</div>
+          </div>
+          <div class="office-card reveal d1">
+            <div class="office-card__city">Remote</div>
+            <p class="office-card__address">
+              Remote-first operations<br />
+              UAE-based support team<br />
+              Available across the Emirates<br />
+              Dubai, UAE
+            </p>
+            <div class="office-card__phone">merzaaihostinger@gmail.com</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ TEASER -->
+    <section class="faq-teaser">
+      <div class="wrap">
+        <div class="faq-teaser__inner">
+          <div class="faq-teaser__content">
+            <div class="sec-ey reveal">
+              <div class="sec-ey__line"></div>
+              <span class="sec-ey__txt">Quick Answers</span>
+            </div>
+            <h2 class="faq-teaser__lead reveal d1">
+              Frequently<br />
+              Asked<br />
+              Questions
+            </h2>
+            <p class="faq-teaser__body reveal d2">
+              Looking for pricing, implementation timelines, or feature details?
+              Browse our comprehensive FAQ section — or just send us a message
+              using the form above and we'll answer directly.
+            </p>
+            <!-- <a href="#" class="faq-teaser__link reveal d3">
+              Visit FAQ Page
+              <svg viewBox="0 0 24 24">
+                <path d="M5 12h14" />
+                <path d="M12 5l7 7-7 7" />
+              </svg>
+            </a> -->
+          </div>
+          <div class="faq-teaser__img reveal d2">
+            <img
+              src="https://images.unsplash.com/photo-1534536281715-e28d76689b4d?w=900&q=85&auto=format&fit=crop"
+              alt="Team support"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BAND -->
+    <section class="cta-band">
+      <div class="wrap">
+        <div class="cta-band__inner">
+          <div class="reveal">
+            <div class="sec-ey" style="margin-bottom: 20px">
+              <div class="sec-ey__line" style="background: var(--green)"></div>
+              <span
+                class="sec-ey__txt"
+                style="color: rgba(246, 244, 232, 0.4); opacity: 1"
+                >Ready To Transform Your Business</span
+              >
+            </div>
+            <h2 class="cta-band__title">
+              Skip The Form,<br />
+              <em>Start Now</em>
+            </h2>
+          </div>
+          <div class="cta-band__right reveal d2">
+       
+<button
+  class="btn btn-outline-light"
+  style="
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+  "
+  onclick="window.location.href='contact.html';"
+>
+  Book A Demo
+</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+<footer class="footer-v2">
+  <div class="fv2__top">
+    <div class="fv2__brand">
+      <img src="logo_circle.png" alt="Merzaai" class="fv2__logo"/>
+      <p class="fv2__tagline">Where commercial decisions<br/>become cash outcomes.</p>
+<div class="fv2__socials">
+  <a href="https://www.linkedin.com/company/meray-cloud/?viewAsMember=true" target="_blank" rel="noopener noreferrer" class="fv2__social" aria-label="LinkedIn">
+    <svg viewBox="0 0 24 24">
+      <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/>
+      <rect x="2" y="9" width="4" height="12"/>
+      <circle cx="4" cy="4" r="2"/>
+    </svg>
+  </a>
+  <a href="https://wa.me/971589259642?text=Hello%20Meray%20team%2C%20I'd%20like%20to%20know%20more%20about%20your%20platform." target="_blank" rel="noopener noreferrer" class="fv2__social" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24">
+      <path d="M12 2C6.48 2 2 6.48 2 12c0 1.89.52 3.66 1.42 5.17L2 22l5.19-1.42A9.95 9.95 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.75 0-3.37-.57-4.69-1.52l-.34-.24-3.11.85.85-3.13-.24-.34A7.94 7.94 0 014 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8z"/>
+      <path d="M16.67 13.56c-.27-.14-1.59-.79-1.83-.88-.25-.09-.43-.14-.61.14-.19.27-.73.88-.89 1.06-.16.18-.32.2-.6.06a7.5 7.5 0 01-2.19-1.34c-.83-.72-1.38-1.6-1.54-1.87-.16-.27-.02-.42.12-.56.12-.12.27-.32.41-.48.14-.16.18-.28.27-.46.09-.18.05-.35-.03-.48-.08-.14-.61-1.46-.84-1.99-.22-.52-.44-.43-.61-.44h-.52c-.18 0-.46.08-.7.37-.24.29-.92.9-.92 2.18 0 1.28.93 2.51 1.06 2.69.13.18 1.82 2.78 4.41 3.9.62.26 1.1.42 1.48.54.62.2 1.19.17 1.64.1.5-.08 1.59-.65 1.81-1.27.22-.62.22-1.15.15-1.27-.07-.12-.27-.19-.54-.33z"/>
+    </svg>
+  </a>
+</div>
+    </div>
+    <div class="fv2__cols">
+      <div class="fv2__col">
+        <div class="fv2__col-head">Features</div>
+        <a href="features.html" class="fv2__lnk">Smart Invoicing</a>
+        <a href="features.html" class="fv2__lnk">CRM & Lead Management</a>
+        <a href="features.html" class="fv2__lnk">Expense & Vendor Mgmt</a>
+        <a href="features.html" class="fv2__lnk">Reports & Insights</a>
+        <a href="features.html" class="fv2__lnk">Business Dashboard</a>
+      </div>
+      <div class="fv2__col">
+        <div class="fv2__col-head">Company</div>
+        <a href="index.html" class="fv2__lnk">Home</a>
+        <a href="meray-about.html" class="fv2__lnk">About Meray</a>
+        <a href="features.html" class="fv2__lnk">Features</a>
+        <a href="testimonails.html" class="fv2__lnk">Testimonials</a>
+        <a href="contact.html" class="fv2__lnk">Contact</a>
+      </div>
+      <div class="fv2__col">
+        <div class="fv2__col-head">Get In Touch</div>
+        <p class="fv2__addr">Meydan , Freezone , Dubai<br/>United Arab Emirates</p>
+        <a href="mailto:advisory@merzaai.com" class="fv2__lnk">advisory@merzaai.com</a>
+    
+      </div>
+    </div>
+  </div>
+  <div class="fv2__bottom">
+    <span class="fv2__copy">© 2025 Merzaai Advisory. All rights reserved.</span>
+    <div class="fv2__legal">
+      <a href="#" class="fv2__legal-lnk">Privacy Policy</a>
+      <a href="#" class="fv2__legal-lnk">Terms of Use</a>
+      <a href="#" class="fv2__legal-lnk">Cookie Policy</a>
+    </div>
+    <span class="fv2__region">UAE · GCC · MENA</span>
+  </div>
+</footer>
+
+    <script>
+      const obs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("visible");
+              obs.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.08 },
+      );
+      document.querySelectorAll(".reveal").forEach((el) => obs.observe(el));
+    </script>
+  </body>
+</html>

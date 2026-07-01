@@ -1,0 +1,1582 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Testimonials · Meray — All-in-One CRM & Accounting Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ─── RESET & ROOT ─── */
+      :root {
+        --bg: #f6f4e8;
+        --ink: #375b6d;
+        --ink-dark: #1c2b33;
+        --ink-faint: rgba(54, 91, 109, 0.1);
+        --ink-mid: rgba(54, 91, 109, 0.22);
+        --white: #ffffff;
+        --warm: #efede0;
+        --warm-deep: #e8e5d4;
+        --green: #9ee8b8;
+        --green-dim: rgba(158, 232, 184, 0.18);
+        --font-head: "Teko", sans-serif;
+        --font-body: "Roboto", sans-serif;
+        --h: 68px;
+        --r: 3px;
+        --page-max: 1400px;
+        --page-pad: 5%;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--bg);
+        color: var(--ink);
+        font-family: var(--font-body);
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      button {
+        font-family: var(--font-body);
+        cursor: pointer;
+        border: none;
+        background: none;
+      }
+      img {
+        display: block;
+      }
+
+      img:not(.fv2__logo) {
+        
+      }
+      .fv2__logo {
+        filter: brightness(0) invert(1);
+      }
+
+      .wrap {
+        max-width: var(--page-max);
+        margin: 0 auto;
+        padding: 0 var(--page-pad);
+      }
+
+      .sec-ey {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 18px;
+      }
+      .sec-ey__line {
+        width: 24px;
+        height: 1px;
+        background: var(--ink);
+        flex-shrink: 0;
+      }
+      .sec-ey__txt {
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--ink-dark);
+        opacity: 0.55;
+      }
+      .sec-title {
+        font-family: var(--font-head);
+        font-size: clamp(40px, 4.8vw, 68px);
+        font-weight: 700;
+        line-height: 0.95;
+        text-transform: uppercase;
+        color: var(--ink);
+      }
+      .sec-title em {
+        font-style: normal;
+        color: transparent;
+        -webkit-text-stroke: 1.5px var(--ink);
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(22px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .d1 {
+        transition-delay: 0.1s;
+      }
+      .d2 {
+        transition-delay: 0.2s;
+      }
+      .d3 {
+        transition-delay: 0.3s;
+      }
+      .d4 {
+        transition-delay: 0.4s;
+      }
+      .d5 {
+        transition-delay: 0.5s;
+      }
+
+      .btn {
+        font-family: var(--font-body);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        border-radius: var(--r);
+        cursor: pointer;
+        transition: all 0.2s;
+        display: inline-flex;
+        align-items: center;
+      }
+      .btn-o {
+        border: 1px solid var(--ink-mid);
+        color: var(--ink);
+        background: transparent;
+        padding: 10px 22px;
+      }
+      .btn-o:hover {
+        background: var(--ink-faint);
+        border-color: var(--ink);
+      }
+      .btn-s {
+        background: var(--ink);
+        color: var(--white);
+        padding: 11px 24px;
+        border: 1px solid var(--ink);
+      }
+      .btn-s:hover {
+        background: var(--ink-dark);
+      }
+
+      /* ─── HEADER ─── */
+      .hdr {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: var(--h);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 var(--page-pad);
+        z-index: 200;
+        background: rgba(246, 244, 232, 0.88);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--ink-faint);
+      }
+      .hdr__logo img {
+        height: 46px;
+        width: auto;
+        
+      }
+      .hdr__nav {
+        display: flex;
+        gap: 36px;
+        align-items: center;
+      }
+      .nav-lnk {
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        color: var(--ink-dark);
+        opacity: 0.6;
+        transition: opacity 0.2s;
+        position: relative;
+        padding-bottom: 3px;
+      }
+      .nav-lnk::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: var(--ink);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.25s;
+      }
+      .nav-lnk:hover {
+        opacity: 1;
+      }
+      .nav-lnk:hover::after {
+        transform: scaleX(1);
+      }
+      .nav-lnk--on {
+        opacity: 1;
+      }
+      .nav-lnk--on::after {
+        transform: scaleX(1);
+      }
+      .hdr__actions {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      /* ─── PAGE HERO (MIN 680PX) ─── */
+      .page-hero {
+        min-height: 680px;
+        display: flex;
+        align-items: center;
+        padding-top: var(--h);
+        background: var(--ink-dark);
+        position: relative;
+        overflow: hidden;
+      }
+      .page-hero::before {
+        content: "TRUSTED";
+        position: absolute;
+        right: -40px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-family: var(--font-head);
+        font-size: 280px;
+        font-weight: 700;
+        color: rgba(246, 244, 232, 0.02);
+        line-height: 1;
+        pointer-events: none;
+        letter-spacing: -14px;
+        white-space: nowrap;
+      }
+      .page-hero__inner {
+        max-width: var(--page-max);
+        margin: 0 auto;
+        padding: 60px var(--page-pad);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+        width: 100%;
+      }
+      .page-hero__eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 24px;
+      }
+      .page-hero__eyebrow__line {
+        width: 28px;
+        height: 1px;
+        background: var(--green);
+      }
+      .page-hero__eyebrow__text {
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: rgba(246, 244, 232, 0.45);
+      }
+      .page-hero__h1 {
+        font-family: var(--font-head);
+        font-size: clamp(52px, 6vw, 96px);
+        font-weight: 700;
+        line-height: 0.92;
+        text-transform: uppercase;
+        color: var(--bg);
+        letter-spacing: 1px;
+      }
+      .page-hero__h1 em {
+        font-style: normal;
+        color: transparent;
+        -webkit-text-stroke: 1.5px var(--bg);
+      }
+      .page-hero__right {
+      }
+      .page-hero__sub {
+        font-size: 15px;
+        font-weight: 300;
+        color: rgba(246, 244, 232, 0.5);
+        line-height: 1.85;
+        margin-bottom: 40px;
+        max-width: 420px;
+      }
+      .page-hero__rating {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 32px;
+      }
+      .page-hero__stars {
+        display: flex;
+        gap: 3px;
+      }
+      .page-hero__stars svg {
+        width: 22px;
+        height: 22px;
+        fill: var(--green);
+        stroke: none;
+      }
+      .page-hero__rating-text {
+        font-family: var(--font-head);
+        font-size: 20px;
+        font-weight: 600;
+        color: var(--bg);
+        letter-spacing: 1px;
+      }
+      .page-hero__rating-sub {
+        font-size: 10px;
+        font-weight: 400;
+        color: rgba(246, 244, 232, 0.35);
+        letter-spacing: 1px;
+      }
+      .page-hero__logos {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+        flex-wrap: wrap;
+      }
+      .page-hero__logo-item {
+        font-family: var(--font-head);
+        font-size: 16px;
+        font-weight: 500;
+        letter-spacing: 3px;
+        color: rgba(246, 244, 232, 0.2);
+        text-transform: uppercase;
+      }
+
+      /* ─── MARQUEE ─── */
+      .mq-wrap {
+        background: var(--ink-dark);
+        overflow: hidden;
+        padding: 15px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.04);
+      }
+      .mq-track {
+        display: flex;
+        animation: mq 28s linear infinite;
+        width: max-content;
+      }
+      .mq-item {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        padding: 0 44px;
+        font-family: var(--font-head);
+        font-size: 13px;
+        font-weight: 400;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        color: rgba(246, 244, 232, 0.65);
+        white-space: nowrap;
+      }
+      .mq-dot {
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: rgba(246, 244, 232, 0.2);
+        flex-shrink: 0;
+      }
+      @keyframes mq {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      /* ─── FEATURED TESTIMONIAL ─── */
+      .featured-testimonial {
+        padding: 100px 0;
+      }
+      .featured-testimonial__inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+      }
+      .featured-testimonial__img {
+        position: relative;
+        border-radius: var(--r);
+        overflow: hidden;
+        aspect-ratio: 4/4.5;
+      }
+      .featured-testimonial__img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .featured-testimonial__play {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+        background: var(--bg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: transform 0.3s;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+      }
+      .featured-testimonial__play:hover {
+        transform: translate(-50%, -50%) scale(1.08);
+      }
+      .featured-testimonial__play svg {
+        width: 22px;
+        height: 22px;
+        fill: var(--ink-dark);
+        margin-left: 3px;
+      }
+      .featured-testimonial__content {
+      }
+      .featured-testimonial__quote-icon {
+        margin-bottom: 24px;
+      }
+      .featured-testimonial__quote-icon svg {
+        width: 48px;
+        height: 48px;
+        stroke: var(--green);
+        fill: none;
+        stroke-width: 1.2;
+        opacity: 0.5;
+      }
+      .featured-testimonial__text {
+        font-family: var(--font-head);
+        font-size: clamp(24px, 2.8vw, 40px);
+        font-weight: 600;
+        color: var(--ink-dark);
+        line-height: 1.15;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+        margin-bottom: 32px;
+      }
+      .featured-testimonial__text em {
+        font-style: normal;
+        color: transparent;
+        -webkit-text-stroke: 1px var(--ink);
+      }
+      .featured-testimonial__author {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 28px;
+      }
+      .featured-testimonial__author-img {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        overflow: hidden;
+        flex-shrink: 0;
+      }
+      .featured-testimonial__author-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .featured-testimonial__author-name {
+        font-family: var(--font-head);
+        font-size: 18px;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: var(--ink-dark);
+        letter-spacing: 0.5px;
+      }
+      .featured-testimonial__author-role {
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--ink);
+        opacity: 0.45;
+      }
+      .featured-testimonial__company {
+        display: inline-block;
+        font-family: var(--font-head);
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 3px;
+        color: var(--ink);
+        opacity: 0.35;
+        text-transform: uppercase;
+        padding: 6px 16px;
+        border: 1px solid var(--ink-faint);
+        border-radius: var(--r);
+      }
+
+      /* ─── TESTIMONIALS GRID ─── */
+      .testimonials-grid {
+        padding: 80px 0 100px;
+        background: var(--warm);
+        border-top: 1px solid var(--ink-faint);
+        border-bottom: 1px solid var(--ink-faint);
+      }
+      .testimonials-grid__header {
+        margin-bottom: 64px;
+      }
+      .testimonials-grid__items {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1px;
+        background: var(--ink-faint);
+        border: 1px solid var(--ink-faint);
+        border-radius: var(--r);
+        overflow: hidden;
+      }
+      .tcard {
+        background: var(--bg);
+        padding: 40px 36px;
+        transition: background 0.3s;
+        display: flex;
+        flex-direction: column;
+      }
+      .tcard:hover {
+        background: var(--warm-deep);
+      }
+      .tcard__stars {
+        display: flex;
+        gap: 3px;
+        margin-bottom: 20px;
+      }
+      .tcard__stars svg {
+        width: 14px;
+        height: 14px;
+        fill: var(--ink-dark);
+        stroke: none;
+      }
+      .tcard__text {
+        font-size: 14px;
+        font-weight: 300;
+        color: var(--ink-dark);
+        line-height: 1.82;
+        opacity: 0.72;
+        margin-bottom: 28px;
+        flex: 1;
+      }
+      .tcard__author {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .tcard__author-img {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        overflow: hidden;
+        flex-shrink: 0;
+      }
+      .tcard__author-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .tcard__author-name {
+        font-family: var(--font-head);
+        font-size: 16px;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: var(--ink-dark);
+        letter-spacing: 0.5px;
+      }
+      .tcard__author-role {
+        font-size: 9px;
+        font-weight: 500;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--ink);
+        opacity: 0.4;
+      }
+      .tcard__industry {
+        margin-top: 16px;
+        font-size: 8px;
+        font-weight: 500;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--green);
+        background: var(--green-dim);
+        display: inline-block;
+        padding: 5px 12px;
+        border-radius: var(--r);
+        align-self: flex-start;
+      }
+
+      /* ─── VIDEO TESTIMONIALS ─── */
+      .video-testimonials {
+        padding: 100px 0;
+      }
+      .video-testimonials__header {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: end;
+        margin-bottom: 64px;
+      }
+      .video-testimonials__sub {
+        font-size: 14px;
+        font-weight: 300;
+        color: var(--ink-dark);
+        line-height: 1.82;
+        max-width: 380px;
+        opacity: 0.68;
+        margin-left: auto;
+      }
+      .video-testimonials__grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background: var(--ink-faint);
+        border: 1px solid var(--ink-faint);
+        border-radius: var(--r);
+        overflow: hidden;
+      }
+      .vcard-test {
+        background: var(--bg);
+        transition: background 0.3s;
+        overflow: hidden;
+      }
+      .vcard-test:hover {
+        background: var(--warm);
+      }
+      .vcard-test__thumb {
+        width: 100%;
+        aspect-ratio: 16/10;
+        overflow: hidden;
+        position: relative;
+        background: var(--ink-dark);
+      }
+      .vcard-test__thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+      }
+      .vcard-test:hover .vcard-test__thumb img {
+        transform: scale(1.04);
+      }
+      .vcard-test__play-sm {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: var(--bg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s;
+      }
+      .vcard-test:hover .vcard-test__play-sm {
+        transform: translate(-50%, -50%) scale(1.1);
+      }
+      .vcard-test__play-sm svg {
+        width: 15px;
+        height: 15px;
+        fill: var(--ink-dark);
+        margin-left: 2px;
+      }
+      .vcard-test__info {
+        padding: 22px 22px 26px;
+      }
+      .vcard-test__name {
+        font-family: var(--font-head);
+        font-size: 18px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--ink-dark);
+        letter-spacing: 0.5px;
+        margin-bottom: 4px;
+      }
+      .vcard-test__role {
+        font-size: 9px;
+        font-weight: 500;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--ink);
+        opacity: 0.38;
+        margin-bottom: 8px;
+      }
+      .vcard-test__quote {
+        font-size: 12px;
+        font-weight: 300;
+        color: var(--ink-dark);
+        line-height: 1.68;
+        opacity: 0.6;
+      }
+
+      /* ─── CTA BAND ─── */
+      .cta-band {
+        background: var(--ink-dark);
+        padding: 100px 0;
+        position: relative;
+        overflow: hidden;
+      }
+      .cta-band::before {
+        content: "JOIN";
+        position: absolute;
+        right: -20px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-family: var(--font-head);
+        font-size: 260px;
+        font-weight: 700;
+        color: rgba(246, 244, 232, 0.025);
+        line-height: 1;
+        pointer-events: none;
+        letter-spacing: -12px;
+      }
+      .cta-band__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 60px;
+        flex-wrap: wrap;
+      }
+      .cta-band__title {
+        font-family: var(--font-head);
+        font-size: clamp(36px, 4vw, 64px);
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--bg);
+        line-height: 0.95;
+      }
+      .cta-band__title em {
+        font-style: normal;
+        color: transparent;
+        -webkit-text-stroke: 1.5px var(--bg);
+      }
+      .cta-band__right {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .btn-light {
+        background: var(--bg);
+        color: var(--ink-dark);
+        padding: 13px 32px;
+        font-size: 12px;
+        border: 1px solid var(--bg);
+        border-radius: var(--r);
+      }
+      .btn-light:hover {
+        background: var(--warm);
+      }
+      .btn-outline-light {
+        border: 1px solid rgba(246, 244, 232, 0.25);
+        color: var(--bg);
+        padding: 12px 28px;
+        font-size: 12px;
+        border-radius: var(--r);
+        transition: all 0.2s;
+      }
+      .btn-outline-light:hover {
+        background: rgba(246, 244, 232, 0.07);
+        border-color: rgba(246, 244, 232, 0.5);
+      }
+
+      /* ─── FOOTER V2 ─── */
+      .footer-v2 {
+        background: var(--ink-dark);
+        border-top: 1px solid rgba(246, 244, 232, 0.07);
+      }
+      .fv2__top {
+        padding: 72px var(--page-pad) 56px;
+        max-width: var(--page-max);
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 260px 1fr;
+        gap: 80px;
+        border-bottom: 1px solid rgba(246, 244, 232, 0.07);
+        align-items: start;
+      }
+      .fv2__logo {
+        height: 40px;
+        width: auto;
+        margin-bottom: 18px;
+        opacity: 0.8;
+      }
+      .fv2__tagline {
+        font-size: 12.5px;
+        font-weight: 300;
+        color: rgba(246, 244, 232, 0.38);
+        line-height: 1.8;
+        margin-bottom: 28px;
+      }
+      .fv2__socials {
+        display: flex;
+        gap: 8px;
+      }
+      .fv2__social {
+        width: 32px;
+        height: 32px;
+        border: 1px solid rgba(246, 244, 232, 0.12);
+        border-radius: var(--r);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition:
+          border-color 0.2s,
+          background 0.2s;
+      }
+      .fv2__social:hover {
+        border-color: rgba(246, 244, 232, 0.28);
+        background: rgba(246, 244, 232, 0.05);
+      }
+      .fv2__social svg {
+        width: 13px;
+        height: 13px;
+        stroke: rgba(246, 244, 232, 0.45);
+        fill: none;
+        stroke-width: 1.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .fv2__cols {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+      }
+      .fv2__col {
+        display: flex;
+        flex-direction: column;
+        gap: 11px;
+      }
+      .fv2__col-head {
+        font-size: 9px;
+        font-weight: 500;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        color: rgba(246, 244, 232, 0.28);
+        margin-bottom: 6px;
+      }
+      .fv2__lnk {
+        font-size: 12.5px;
+        font-weight: 300;
+        color: rgba(246, 244, 232, 0.5);
+        transition: color 0.2s;
+        line-height: 1;
+      }
+      .fv2__lnk:hover {
+        color: rgba(246, 244, 232, 0.85);
+      }
+      .fv2__addr {
+        font-size: 12.5px;
+        font-weight: 300;
+        color: rgba(246, 244, 232, 0.32);
+        line-height: 1.72;
+      }
+      .fv2__cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        margin-top: 6px;
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--green);
+        transition: gap 0.2s;
+      }
+      .fv2__cta:hover {
+        gap: 11px;
+      }
+      .fv2__cta svg {
+        width: 12px;
+        height: 12px;
+        stroke: var(--green);
+        fill: none;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .fv2__bottom {
+        max-width: var(--page-max);
+        margin: 0 auto;
+        padding: 22px var(--page-pad);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+      .fv2__copy {
+        font-size: 11px;
+        color: rgba(246, 244, 232, 0.22);
+      }
+      .fv2__legal {
+        display: flex;
+        gap: 22px;
+      }
+      .fv2__legal-lnk {
+        font-size: 11px;
+        color: rgba(246, 244, 232, 0.22);
+        transition: color 0.2s;
+      }
+      .fv2__legal-lnk:hover {
+        color: rgba(246, 244, 232, 0.55);
+      }
+      .fv2__region {
+        font-size: 9px;
+        font-weight: 500;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: rgba(246, 244, 232, 0.18);
+      }
+
+      /* ─── KEYFRAMES ─── */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ─── RESPONSIVE ─── */
+      @media (max-width: 1100px) {
+        .page-hero {
+          min-height: auto;
+        }
+        .page-hero__inner,
+        .featured-testimonial__inner,
+        .video-testimonials__header {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+        .video-testimonials__sub {
+          margin-left: 0;
+          max-width: 100%;
+        }
+        .testimonials-grid__items {
+          grid-template-columns: 1fr;
+        }
+        .video-testimonials__grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .cta-band__inner {
+          flex-direction: column;
+          gap: 36px;
+        }
+        .fv2__top {
+          grid-template-columns: 1fr;
+          gap: 48px;
+        }
+      }
+      @media (max-width: 768px) {
+        .hdr__nav {
+          display: none;
+        }
+        .video-testimonials__grid {
+          grid-template-columns: 1fr;
+        }
+        .fv2__cols {
+          grid-template-columns: 1fr 1fr;
+        }
+        .fv2__bottom {
+          flex-direction: column;
+          text-align: center;
+          gap: 12px;
+        }
+        .fv2__legal {
+          justify-content: center;
+        }
+      }
+      @media (max-width: 480px) {
+        .fv2__cols {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="hdr">
+      <div class="hdr__logo">
+        <img
+          src="logo_circle.png"
+          alt="Merzaai"
+        />
+      </div>
+      <nav class="hdr__nav">
+          <a href="index.html" class="nav-lnk ">Home</a>
+        <a href="meray-about.html" class="nav-lnk ">About</a>
+        <a href="features.html" class="nav-lnk ">Features</a>
+        <a href="testimonails.html" class="nav-lnk nav-lnk--on">Testimonials</a>
+        <a href="contact.html" class="nav-lnk">Contact</a>
+      </nav>
+   
+
+<link rel="stylesheet" href="mobile-nav.css">
+<script src="mobile-nav.js" defer></script>
+
+
+<div class="hdr__actions">
+
+   <a href="https://meray.cloud/login">
+        <button class="btn btn-s">Sign In</button>
+    </a>
+
+  <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+    </button>
+ 
+
+
+   
+</div>
+
+
+    </header>
+
+        <div class="drawer-overlay" id="drawerOverlay"></div>
+
+<nav class="hdr__nav-drawer" id="mobileDrawer">
+    <button class="drawer-close" id="drawerCloseBtn">✕</button>
+    <a href="index.html" class="nav-lnk nav-lnk--on">Home</a>
+    <a href="meray-about.html" class="nav-lnk">About</a>
+    <a href="features.html" class="nav-lnk">Features</a>
+    <a href="testimonails.html" class="nav-lnk">Testimonials</a>
+    <a href="contact.html" class="nav-lnk">Contact</a>
+    <div class="drawer-footer">
+    <p>Where commercial decisions<br/>become cash outcomes.</p>
+    <a href="https://meray.cloud/login" class="drawer-cta">Sign In</a>
+    
+    
+  </div>
+</nav>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+      <div class="page-hero__inner">
+        <div style="animation: fadeUp 0.8s 0.15s both">
+          <div class="page-hero__eyebrow">
+            <div class="page-hero__eyebrow__line"></div>
+            <span class="page-hero__eyebrow__text">Success Stories</span>
+          </div>
+          <h1 class="page-hero__h1">
+            Trusted By<br />
+            Businesses<br />
+            <em>Across UAE</em>
+          </h1>
+        </div>
+        <div class="page-hero__right" style="animation: fadeUp 0.8s 0.3s both">
+          <p class="page-hero__sub">
+            Hear directly from business owners, finance heads, and operations
+            leaders who transformed their workflows with Meray.
+          </p>
+          <div class="page-hero__rating">
+            <div>
+              <div class="page-hero__stars">
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+            </div>
+            <div>
+              <div class="page-hero__rating-text">4.8 out of 5</div>
+              <div class="page-hero__rating-sub">Based on 500+ reviews</div>
+            </div>
+          </div>
+          <div class="page-hero__logos">
+            <span class="page-hero__logo-item">TechNova</span>
+            <span class="page-hero__logo-item">GreenLeaf</span>
+            <span class="page-hero__logo-item">BuildMart</span>
+            <span class="page-hero__logo-item">SwiftTrade</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="mq-wrap">
+      <div class="mq-track">
+        <span class="mq-item">4.8★ Average Rating<span class="mq-dot"></span></span>
+        <span class="mq-item">500+ Businesses<span class="mq-dot"></span></span>
+        <span class="mq-item">50K+ Invoices<span class="mq-dot"></span></span>
+        <span class="mq-item">10K+ Leads Managed<span class="mq-dot"></span></span>
+        <span class="mq-item">24hr Support<span class="mq-dot"></span></span>
+        <span class="mq-item">GST Ready<span class="mq-dot"></span></span>
+        <span class="mq-item">4.8★ Average Rating<span class="mq-dot"></span></span>
+        <span class="mq-item">500+ Businesses<span class="mq-dot"></span></span>
+        <span class="mq-item">50K+ Invoices<span class="mq-dot"></span></span>
+        <span class="mq-item">10K+ Leads Managed<span class="mq-dot"></span></span>
+        <span class="mq-item">24hr Support<span class="mq-dot"></span></span>
+        <span class="mq-item">GST Ready<span class="mq-dot"></span></span>
+      </div>
+    </div>
+
+    <!-- FEATURED TESTIMONIAL -->
+    <section class="featured-testimonial">
+      <div class="wrap">
+        <div class="featured-testimonial__inner">
+          <div class="featured-testimonial__img reveal">
+            <img
+              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=900&q=85&auto=format&fit=crop"
+              alt="Aisha Al Nuaimi at her office"
+            />
+            <div class="featured-testimonial__play">
+              <svg viewBox="0 0 24 24">
+                <polygon points="5 3 19 12 5 21 5 3" />
+              </svg>
+            </div>
+          </div>
+          <div class="featured-testimonial__content">
+            <div class="sec-ey reveal">
+              <div class="sec-ey__line"></div>
+              <span class="sec-ey__txt">Featured Story</span>
+            </div>
+            <div class="featured-testimonial__quote-icon reveal d1">
+              <svg viewBox="0 0 24 24">
+                <path d="M10 11H6.414a1 1 0 01-.894-.553L3.276 5.724A1 1 0 013.382 4.34L7.236 1.106a1 1 0 011.382.15L11.106 4.34A1 1 0 0111 5.724L8.96 10.447A1 1 0 018 11z" />
+                <path d="M20 11h-3.586a1 1 0 01-.894-.553L13.276 5.724A1 1 0 0113.382 4.34L17.236 1.106a1 1 0 011.382.15L21.106 4.34A1 1 0 0121 5.724L18.96 10.447A1 1 0 0118 11z" />
+              </svg>
+            </div>
+            <p class="featured-testimonial__text reveal d2">
+              "Meray replaced four separate tools in our business. Our team went
+              from spending <em>15 hours/week</em> on manual data entry to less
+              than one. It's not just software — it's how we run now."
+            </p>
+            <div class="featured-testimonial__author reveal d3">
+              <div class="featured-testimonial__author-img">
+                <img
+                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&q=85&auto=format&fit=crop&crop=face"
+                  alt="Aisha Al Nuaimi"
+                />
+              </div>
+              <div>
+                <div class="featured-testimonial__author-name">Aisha Al Nuaimi</div>
+                <div class="featured-testimonial__author-role">Finance Director</div>
+              </div>
+            </div>
+            <span class="featured-testimonial__company reveal d4">TechNova Solutions</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS GRID -->
+    <section class="testimonials-grid">
+      <div class="wrap">
+        <div class="testimonials-grid__header">
+          <div class="reveal">
+            <div class="sec-ey">
+              <div class="sec-ey__line"></div>
+              <span class="sec-ey__txt">More Success Stories</span>
+            </div>
+            <h2 class="sec-title">
+              What Our<br />
+              <em>Users Say</em>
+            </h2>
+          </div>
+        </div>
+
+        <div class="testimonials-grid__items">
+
+          <div class="tcard reveal">
+            <div class="tcard__stars">
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <p class="tcard__text">
+              "The inventory module alone saved us ₹3L in the first quarter by
+              preventing over-ordering. Our purchase manager now makes decisions
+              based on real data, not gut feeling."
+            </p>
+            <div class="tcard__author">
+              <div class="tcard__author-img">
+                <img
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=85&auto=format&fit=crop&crop=face"
+                  alt="Khalid Al Hammadi"
+                />
+              </div>
+              <div>
+                <div class="tcard__author-name">Khalid Al Hammadi</div>
+                <div class="tcard__author-role">Operations Head</div>
+              </div>
+            </div>
+            <span class="tcard__industry">Manufacturing</span>
+          </div>
+
+          <div class="tcard reveal d1">
+            <div class="tcard__stars">
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <p class="tcard__text">
+              "GST filing used to take our accountant 3 days every month. Now
+              it's done in under 4 hours because all the data is already
+              reconciled. Meray literally paid for itself in the first week."
+            </p>
+            <div class="tcard__author">
+              <div class="tcard__author-img">
+                <img
+                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&q=85&auto=format&fit=crop&crop=face"
+                  alt="Saeed Al Falasi"
+                />
+              </div>
+              <div>
+                <div class="tcard__author-name">Saeed Al Falasi</div>
+                <div class="tcard__author-role">Managing Partner</div>
+              </div>
+            </div>
+            <span class="tcard__industry">Wholesale Trade</span>
+          </div>
+
+          <div class="tcard reveal d2">
+            <div class="tcard__stars">
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <p class="tcard__text">
+              "We run a 60-person services firm. Before Meray, our sales team
+              had no visibility into invoicing status. Now the pipeline connects
+              seamlessly to billing — our collections improved by 35%."
+            </p>
+            <div class="tcard__author">
+              <div class="tcard__author-img">
+                <img
+                  src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&q=85&auto=format&fit=crop&crop=face"
+                  alt="Mariam Al Mazrouei"
+                />
+              </div>
+              <div>
+                <div class="tcard__author-name">Mariam Al Mazrouei</div>
+                <div class="tcard__author-role">CEO</div>
+              </div>
+            </div>
+            <span class="tcard__industry">IT Services</span>
+          </div>
+
+          <div class="tcard reveal d3">
+            <div class="tcard__stars">
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <p class="tcard__text">
+              "The onboarding support was incredible. The Meray team helped us
+              migrate 3 years of data from our legacy system in under a week.
+              Zero downtime, zero data loss. That's rare in business software."
+            </p>
+            <div class="tcard__author">
+              <div class="tcard__author-img">
+                <img
+                  src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&q=85&auto=format&fit=crop&crop=face"
+                  alt="Rashid Al Shamsi"
+                />
+              </div>
+              <div>
+                <div class="tcard__author-name">Rashid Al Shamsi</div>
+                <div class="tcard__author-role">CFO</div>
+              </div>
+            </div>
+            <span class="tcard__industry">Logistics</span>
+          </div>
+
+          <div class="tcard reveal d4">
+  <div class="tcard__stars">
+    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+  </div>
+  <p class="tcard__text">
+    "As a Chartered Accountant managing 30+ client books, Meray has been a game-changer. The unified ledger means I reconcile accounts in half the time, and my clients love the real-time dashboards. I've recommended it to every business owner I work with."
+  </p>
+  <div class="tcard__author">
+    <div class="tcard__author-img">
+      <img
+        src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&q=85&auto=format&fit=crop&crop=face"
+        alt="Tariq Al Suwaidi"
+      />
+    </div>
+    <div>
+      <div class="tcard__author-name">Tariq Al Suwaidi</div>
+      <div class="tcard__author-role">Chartered Accountant</div>
+    </div>
+  </div>
+  <span class="tcard__industry">Financial Services</span>
+</div>
+
+<div class="tcard reveal d5">
+  <div class="tcard__stars">
+    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+  </div>
+  <p class="tcard__text">
+    "We manufacture industrial components across 3 units. Tracking raw material inventory and finished goods used to be a full-time job for two people. With Meray's inventory module and automatic purchase order generation, we've cut wastage by 18% and freed up one full headcount."
+  </p>
+  <div class="tcard__author">
+    <div class="tcard__author-img">
+      <img
+        src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=150&q=85&auto=format&fit=crop&crop=face"
+        alt="Hamdan Al Ketbi"
+      />
+    </div>
+    <div>
+      <div class="tcard__author-name">Hamdan Al Ketbi</div>
+      <div class="tcard__author-role">Plant Head</div>
+    </div>
+  </div>
+  <span class="tcard__industry">Industrial Manufacturing</span>
+</div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- VIDEO TESTIMONIALS -->
+    <section class="video-testimonials">
+      <div class="wrap">
+        <div class="video-testimonials__header">
+          <div class="reveal">
+            <div class="sec-ey">
+              <div class="sec-ey__line"></div>
+              <span class="sec-ey__txt">Watch Their Stories</span>
+            </div>
+            <h2 class="sec-title">
+              In Their<br />
+              <em>Own Words</em>
+            </h2>
+          </div>
+          <p class="video-testimonials__sub reveal d2">
+            Nothing beats hearing directly from business owners who've
+            transformed their operations. Press play on these short video
+            testimonials.
+          </p>
+        </div>
+
+        <div class="video-testimonials__grid">
+          <div class="vcard-test reveal">
+            <div class="vcard-test__thumb">
+              <img
+                src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=85&auto=format&fit=crop"
+                alt="Video testimonial thumbnail"
+              />
+              <div class="vcard-test__play-sm">
+                <svg viewBox="0 0 24 24">
+                  <polygon points="5 3 19 12 5 21 5 3" />
+                </svg>
+              </div>
+            </div>
+            <div class="vcard-test__info">
+              <div class="vcard-test__name">Faisal Al Qasimi</div>
+              <div class="vcard-test__role">Founder, BuildMart Retail</div>
+              <p class="vcard-test__quote">
+                "How Meray helped us scale from 2 stores to 15 without adding a single admin hire."
+              </p>
+            </div>
+          </div>
+
+          <div class="vcard-test reveal d1">
+            <div class="vcard-test__thumb">
+              <img
+                src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=85&auto=format&fit=crop"
+                alt="Video testimonial thumbnail"
+              />
+              <div class="vcard-test__play-sm">
+                <svg viewBox="0 0 24 24">
+                  <polygon points="5 3 19 12 5 21 5 3" />
+                </svg>
+              </div>
+            </div>
+            <div class="vcard-test__info">
+              <div class="vcard-test__name">Noora Al Mansoori</div>
+              <div class="vcard-test__role">Finance Head, GreenLeaf Exports</div>
+              <p class="vcard-test__quote">
+                "Reconciling multi-currency invoices used to be a nightmare. Meray made it automatic."
+              </p>
+            </div>
+          </div>
+
+          <div class="vcard-test reveal d2">
+            <div class="vcard-test__thumb">
+              <img
+                src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&q=85&auto=format&fit=crop"
+                alt="Video testimonial thumbnail"
+              />
+              <div class="vcard-test__play-sm">
+                <svg viewBox="0 0 24 24">
+                  <polygon points="5 3 19 12 5 21 5 3" />
+                </svg>
+              </div>
+            </div>
+            <div class="vcard-test__info">
+              <div class="vcard-test__name">Rashid Al Shamsi</div>
+              <div class="vcard-test__role">Director, SwiftTrade Logistics</div>
+              <p class="vcard-test__quote">
+                "The real-time dashboard gives me a snapshot of my entire business before my morning coffee."
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BAND -->
+    <section class="cta-band">
+      <div class="wrap">
+        <div class="cta-band__inner">
+          <div class="reveal">
+            <div class="sec-ey" style="margin-bottom: 20px">
+              <div class="sec-ey__line" style="background: var(--green)"></div>
+              <span
+                class="sec-ey__txt"
+                style="color: rgba(246, 244, 232, 0.4); opacity: 1"
+                >Be Our Next Success Story</span
+              >
+            </div>
+            <h2 class="cta-band__title">
+              Join 500+<br />
+              <em>Happy Businesses</em>
+            </h2>
+          </div>
+          <div class="cta-band__right reveal d2">
+            <button
+              class="btn btn-light"
+              style="
+                font-family: var(--font-body);
+                font-size: 12px;
+                font-weight: 500;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                cursor: pointer;
+                display: inline-flex;
+                align-items: center;
+              "
+            >
+              Start Free Trial
+            </button>
+<button
+  class="btn btn-outline-light"
+  style="
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+  "
+  onclick="window.location.href='contact.html';"
+>
+  Book A Demo
+</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+<footer class="footer-v2">
+  <div class="fv2__top">
+    <div class="fv2__brand">
+      <img src="logo_circle.png" alt="Merzaai" class="fv2__logo"/>
+      <p class="fv2__tagline">Where commercial decisions<br/>become cash outcomes.</p>
+<div class="fv2__socials">
+  <a href="https://www.linkedin.com/company/meray-cloud/?viewAsMember=true" target="_blank" rel="noopener noreferrer" class="fv2__social" aria-label="LinkedIn">
+    <svg viewBox="0 0 24 24">
+      <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/>
+      <rect x="2" y="9" width="4" height="12"/>
+      <circle cx="4" cy="4" r="2"/>
+    </svg>
+  </a>
+  <a href="https://wa.me/971589259642?text=Hello%20Meray%20team%2C%20I'd%20like%20to%20know%20more%20about%20your%20platform." target="_blank" rel="noopener noreferrer" class="fv2__social" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24">
+      <path d="M12 2C6.48 2 2 6.48 2 12c0 1.89.52 3.66 1.42 5.17L2 22l5.19-1.42A9.95 9.95 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.75 0-3.37-.57-4.69-1.52l-.34-.24-3.11.85.85-3.13-.24-.34A7.94 7.94 0 014 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8z"/>
+      <path d="M16.67 13.56c-.27-.14-1.59-.79-1.83-.88-.25-.09-.43-.14-.61.14-.19.27-.73.88-.89 1.06-.16.18-.32.2-.6.06a7.5 7.5 0 01-2.19-1.34c-.83-.72-1.38-1.6-1.54-1.87-.16-.27-.02-.42.12-.56.12-.12.27-.32.41-.48.14-.16.18-.28.27-.46.09-.18.05-.35-.03-.48-.08-.14-.61-1.46-.84-1.99-.22-.52-.44-.43-.61-.44h-.52c-.18 0-.46.08-.7.37-.24.29-.92.9-.92 2.18 0 1.28.93 2.51 1.06 2.69.13.18 1.82 2.78 4.41 3.9.62.26 1.1.42 1.48.54.62.2 1.19.17 1.64.1.5-.08 1.59-.65 1.81-1.27.22-.62.22-1.15.15-1.27-.07-.12-.27-.19-.54-.33z"/>
+    </svg>
+  </a>
+</div>
+    </div>
+    <div class="fv2__cols">
+      <div class="fv2__col">
+        <div class="fv2__col-head">Features</div>
+        <a href="features.html" class="fv2__lnk">Smart Invoicing</a>
+        <a href="features.html" class="fv2__lnk">CRM & Lead Management</a>
+        <a href="features.html" class="fv2__lnk">Expense & Vendor Mgmt</a>
+        <a href="features.html" class="fv2__lnk">Reports & Insights</a>
+        <a href="features.html" class="fv2__lnk">Business Dashboard</a>
+      </div>
+      <div class="fv2__col">
+        <div class="fv2__col-head">Company</div>
+        <a href="index.html" class="fv2__lnk">Home</a>
+        <a href="meray-about.html" class="fv2__lnk">About Meray</a>
+        <a href="features.html" class="fv2__lnk">Features</a>
+        <a href="testimonails.html" class="fv2__lnk">Testimonials</a>
+        <a href="contact.html" class="fv2__lnk">Contact</a>
+      </div>
+      <div class="fv2__col">
+        <div class="fv2__col-head">Get In Touch</div>
+        <p class="fv2__addr">Meydan , Freezone , Dubai<br/>United Arab Emirates</p>
+        <a href="mailto:advisory@merzaai.com" class="fv2__lnk">advisory@merzaai.com</a>
+    
+      </div>
+    </div>
+  </div>
+  <div class="fv2__bottom">
+    <span class="fv2__copy">© 2025 Merzaai Advisory. All rights reserved.</span>
+    <div class="fv2__legal">
+      <a href="#" class="fv2__legal-lnk">Privacy Policy</a>
+      <a href="#" class="fv2__legal-lnk">Terms of Use</a>
+      <a href="#" class="fv2__legal-lnk">Cookie Policy</a>
+    </div>
+    <span class="fv2__region">UAE · GCC · MENA</span>
+  </div>
+</footer>
+
+    <script>
+      const obs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("visible");
+              obs.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.08 },
+      );
+      document.querySelectorAll(".reveal").forEach((el) => obs.observe(el));
+    </script>
+  </body>
+</html>
